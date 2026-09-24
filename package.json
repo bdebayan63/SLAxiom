@@ -1,0 +1,37 @@
+{
+  "name": "slaxiom-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SLAxiom - Confidential Contract Performance & SLA Verification on Midnight Network",
+  "workspaces": [
+    "contract",
+    "frontend",
+    "scripts"
+  ],
+  "scripts": {
+    "setup": "npm run setup:contract && npm run setup:frontend && npm run setup:scripts",
+    "setup:contract": "npm --prefix contract install",
+    "setup:frontend": "npm --prefix frontend install",
+    "setup:scripts": "npm --prefix scripts install",
+    "compile:contract": "wsl -d Ubuntu -e bash -c 'cd \"$(wslpath \"'\"$PWD/contract\"'\")\" && /home/bisha/.local/bin/compact compile src/slaxiom.compact --output-dir managed'",
+    "test:contract": "npm --prefix contract test",
+    "test:frontend": "npm --prefix frontend test",
+    "test": "npm run test:contract && npm run test:frontend",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run compile:contract && npm run build:frontend",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker logs -f midnight-proof-server"
+  },
+  "keywords": [
+    "midnight-network",
+    "zero-knowledge",
+    "compact",
+    "sla-verification",
+    "privacy-preserving",
+    "zk-snark"
+  ],
+  "author": "SLAxiom Core Team",
+  "license": "Apache-2.0"
+}
