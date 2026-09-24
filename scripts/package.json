@@ -1,0 +1,26 @@
+{
+  "name": "@slaxiom/scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SLAxiom Deployment, Wallet Generation, and DUST Utilities",
+  "scripts": {
+    "setup-wallet": "tsx setup-wallet.ts",
+    "generate-dust": "tsx generate-dust.ts",
+    "deploy:preview": "tsx deploy.ts --network preview",
+    "deploy:preprod": "tsx deploy.ts --network preprod"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "^0.16.0",
+    "@midnight-ntwrk/wallet-sdk-address-format": "^3.1.0",
+    "@midnight-ntwrk/wallet-sdk-hd": "^3.0.3",
+    "bip39": "^3.1.0",
+    "dotenv": "^16.4.5",
+    "slaxiom-workspace": "file:.."
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
