@@ -1,0 +1,1658 @@
+[
+  {
+    "txIndex": 1,
+    "userIndex": 0,
+    "periodId": "2026-P01-1",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod171695b1bea044badb39358209f4e32f9fae025",
+    "privateMetrics": {
+      "uptimeBps": 9957,
+      "uptimePercent": "99.57%",
+      "latencyP95Ms": 265,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x48994e0492fcdf43ffe6e15af3a55d13cc4a82ebf453d73bf292cc65057404d6",
+    "blockNumber": 2776510,
+    "timestamp": "2026-09-30T10:31:22.907Z"
+  },
+  {
+    "txIndex": 2,
+    "userIndex": 1,
+    "periodId": "2026-P01-2",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod1851e1a4778c54564647eddf327b236883f0815",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 178,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x8ea50b0762a18a744b3f321d80e8c4f8a0a67b9584bce5c5fc2e04a451eab4ef",
+    "blockNumber": 2776511,
+    "timestamp": "2026-09-30T10:34:22.908Z"
+  },
+  {
+    "txIndex": 3,
+    "userIndex": 2,
+    "periodId": "2026-P01-3",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1f74d0fe3d8a5580703d7691d48aab8bcf4c13c",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 181,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf195fd88cc6c6b1040b51018dd132feb5cdee6e09a3a00e3e0fe8ac597ec138d",
+    "blockNumber": 2776513,
+    "timestamp": "2026-09-30T10:37:22.908Z"
+  },
+  {
+    "txIndex": 4,
+    "userIndex": 3,
+    "periodId": "2026-P01-4",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod108102d9659cd1150251f71128cd64ba5c1e367",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 184,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xe5afa4038f876419fb8cedd6c154d0f8602bb21e25864c7757226d0809eb9467",
+    "blockNumber": 2776515,
+    "timestamp": "2026-09-30T10:40:22.908Z"
+  },
+  {
+    "txIndex": 5,
+    "userIndex": 4,
+    "periodId": "2026-P01-5",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1ea54b68e9ebd2802edbc60595dfad9051dd57c",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 187,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb525de673ecbcf2045e176f770010d8b9f15fccb3f7ed66026e804183fe93fe0",
+    "blockNumber": 2776517,
+    "timestamp": "2026-09-30T10:43:22.908Z"
+  },
+  {
+    "txIndex": 6,
+    "userIndex": 5,
+    "periodId": "2026-P01-6",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod17effeb69097beef39c3fdc0d35d2e587120f58",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 190,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x05268ae05db2146ae65344d32d71079f1b6f030a6522f599f6ae63ab97343d49",
+    "blockNumber": 2776519,
+    "timestamp": "2026-09-30T10:46:22.908Z"
+  },
+  {
+    "txIndex": 7,
+    "userIndex": 6,
+    "periodId": "2026-P02-1",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod1d1782ddf35765b83702dc9d4d36fbcf4f38f22",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 193,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb8f39ea54556d19d095db52d9ecdf8e923f23d22561ac2fbad798b964181a420",
+    "blockNumber": 2776520,
+    "timestamp": "2026-09-30T10:49:22.908Z"
+  },
+  {
+    "txIndex": 8,
+    "userIndex": 7,
+    "periodId": "2026-P02-2",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod102d0a4fffda04387853cceda01dd7226df55e4",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 196,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x55250ddec3cdec0ddea963d1df46cd60d895f710b6c53dc2dbbc3a85c3ac40ca",
+    "blockNumber": 2776522,
+    "timestamp": "2026-09-30T10:52:22.908Z"
+  },
+  {
+    "txIndex": 9,
+    "userIndex": 8,
+    "periodId": "2026-P02-3",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod16cb0a8f2c75bc9803a801bcee3a9add0efa126",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 199,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x9d322b9178eb1d126b111920aad092d3a4c5c14410ba9063afe52a3b40c50574",
+    "blockNumber": 2776524,
+    "timestamp": "2026-09-30T10:55:22.908Z"
+  },
+  {
+    "txIndex": 10,
+    "userIndex": 9,
+    "periodId": "2026-P02-4",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod16aec8ad77b2f72971582032a456587df7a67e9",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 292,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xe1a8519e4cd317ff7e1622bb1f75869317e9cf7284b38d5c892e4f72cb2a12c1",
+    "blockNumber": 2776526,
+    "timestamp": "2026-09-30T10:58:22.908Z"
+  },
+  {
+    "txIndex": 11,
+    "userIndex": 10,
+    "periodId": "2026-P02-5",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod105693b327134899729101a321e1959e097e7ea",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 205,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x3839627b885be47a02dd5134db5358d439d6924d515fc41038d3357bcafb16e0",
+    "blockNumber": 2776528,
+    "timestamp": "2026-09-30T11:01:22.908Z"
+  },
+  {
+    "txIndex": 12,
+    "userIndex": 11,
+    "periodId": "2026-P02-6",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod11a41d3bbeaa7e8cb18952acf0bb02f57992a80",
+    "privateMetrics": {
+      "uptimeBps": 9961,
+      "uptimePercent": "99.61%",
+      "latencyP95Ms": 208,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x85da6e8b262c830ed76ac5955e9207f39a3c8daf45090b22f3993c32e3c79c0f",
+    "blockNumber": 2776529,
+    "timestamp": "2026-09-30T11:04:22.908Z"
+  },
+  {
+    "txIndex": 13,
+    "userIndex": 12,
+    "periodId": "2026-P03-1",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod17acd409f761bf66ecbeea66f22280cbb86daed",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 211,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x05bc1a9312e553dd29444f261c6b1c5f58de9c79696f3f5693bae5514f887402",
+    "blockNumber": 2776531,
+    "timestamp": "2026-09-30T11:07:22.908Z"
+  },
+  {
+    "txIndex": 14,
+    "userIndex": 13,
+    "periodId": "2026-P03-2",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod1f3cc1faef72b573627ef95c8e3d76e0a2125dc",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 214,
+      "incidentCount": 4
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xe9b6015a98e646405f1b766c3f84a84b71ea7af7b1c0836d48bb1054b4e40ce2",
+    "blockNumber": 2776533,
+    "timestamp": "2026-09-30T11:10:22.908Z"
+  },
+  {
+    "txIndex": 15,
+    "userIndex": 14,
+    "periodId": "2026-P03-3",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod12cef3c8311ddadae50d275f7d15c1059bf8d30",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 217,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb4d15bc7c05ee6f659d3f71764afb5f5526d29b4b755437182259a5c374347f0",
+    "blockNumber": 2776535,
+    "timestamp": "2026-09-30T11:13:22.908Z"
+  },
+  {
+    "txIndex": 16,
+    "userIndex": 15,
+    "periodId": "2026-P03-4",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod100115b203f97efacee6c50490112600072b9ce",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 220,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x6068dc9ec57bee2fe9ea9307c14263f80440a37d78fe79d2729ecd68dc2ea53b",
+    "blockNumber": 2776537,
+    "timestamp": "2026-09-30T11:16:22.908Z"
+  },
+  {
+    "txIndex": 17,
+    "userIndex": 16,
+    "periodId": "2026-P03-5",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1d639481410b8bb51027faaef4d713e3c559b60",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 223,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf45097a6cb2ed87546b77883e9d0a13f20e74120a7109136dc433a70270ee0d4",
+    "blockNumber": 2776538,
+    "timestamp": "2026-09-30T11:19:22.908Z"
+  },
+  {
+    "txIndex": 18,
+    "userIndex": 17,
+    "periodId": "2026-P03-6",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod10b06871b76795e334412b991d69dc767a583a9",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 226,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xca719b36b2d7fc3d3d553b40e0ee4ee26aa8c15bb41acbe667f0fd57c829d8b4",
+    "blockNumber": 2776540,
+    "timestamp": "2026-09-30T11:22:22.908Z"
+  },
+  {
+    "txIndex": 19,
+    "userIndex": 18,
+    "periodId": "2026-P04-1",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1d8d9ef829070bf807dd25d7899d6ca7adb7390",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 319,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x6275908d7137a80bc61be3e70eca5fbad085ca40753400dab520cc0f5c65c7fd",
+    "blockNumber": 2776542,
+    "timestamp": "2026-09-30T11:25:22.908Z"
+  },
+  {
+    "txIndex": 20,
+    "userIndex": 19,
+    "periodId": "2026-P04-2",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod14b7f53cf9bb274b830c2afe4cf676c30cf253e",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 232,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x55c75f0099582fbc1b0d775b9928e4a9b80e24e5217cf3cf849ede963250031e",
+    "blockNumber": 2776544,
+    "timestamp": "2026-09-30T11:28:22.908Z"
+  },
+  {
+    "txIndex": 21,
+    "userIndex": 20,
+    "periodId": "2026-P04-3",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod1cbe7ef178641e1c6d8b31c82fbde04025a7e55",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 235,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x9c0a4326bb08039023e2de0d9aa6e4db8f9ec3957e96ae3bc2d7d0b8f7ef29b9",
+    "blockNumber": 2776546,
+    "timestamp": "2026-09-30T11:31:22.908Z"
+  },
+  {
+    "txIndex": 22,
+    "userIndex": 21,
+    "periodId": "2026-P04-4",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod1bc3aaf0abc361b9b713cbe9c4824ab138e7f16",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 238,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x38977c2014678a4c92878439ade214756bb86550c8c2c43cc49c27d771e544f6",
+    "blockNumber": 2776547,
+    "timestamp": "2026-09-30T11:34:22.908Z"
+  },
+  {
+    "txIndex": 23,
+    "userIndex": 22,
+    "periodId": "2026-P04-5",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod11ab090cb98fbf0c3e62816992cfb1810e4644a",
+    "privateMetrics": {
+      "uptimeBps": 9958,
+      "uptimePercent": "99.58%",
+      "latencyP95Ms": 241,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x778c8031b7114fc6f8e3270f386a9d8bcadaa9985cf2bc048522e2dc126646c8",
+    "blockNumber": 2776549,
+    "timestamp": "2026-09-30T11:37:22.908Z"
+  },
+  {
+    "txIndex": 24,
+    "userIndex": 23,
+    "periodId": "2026-P04-6",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod12d8918b1285b7b73997c79f1eb25c0e5a5b97d",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 244,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf6f70ca1d9adf1d709ecf4cc9f56fa480dceeabd60886afda0afdf94d42862e7",
+    "blockNumber": 2776551,
+    "timestamp": "2026-09-30T11:40:22.908Z"
+  },
+  {
+    "txIndex": 25,
+    "userIndex": 24,
+    "periodId": "2026-P05-1",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod1cd914d64408839cffd3766c9b12b8ba8aa2c19",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 247,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x3790858e46f35ec63c887ff5f9d3cd4fce4c7fcadb4152318b5237b42f116a1c",
+    "blockNumber": 2776553,
+    "timestamp": "2026-09-30T11:43:22.908Z"
+  },
+  {
+    "txIndex": 26,
+    "userIndex": 25,
+    "periodId": "2026-P05-2",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1abc68ca15a779f9920dfedc3ff08a4a4088c54",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 250,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x2ec3e8dec2b6406158cd89f8f3b45250d7742ec58ede1b1c148a0db1a0b8f266",
+    "blockNumber": 2776555,
+    "timestamp": "2026-09-30T11:46:22.908Z"
+  },
+  {
+    "txIndex": 27,
+    "userIndex": 26,
+    "periodId": "2026-P05-3",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod1b65141f40f9e689bfad0bf263a0b30637e2ad6",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 253,
+      "incidentCount": 4
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x91045db61884f45c365076ac6dc30783d7619bdc086f86923e86bea4581ed969",
+    "blockNumber": 2776556,
+    "timestamp": "2026-09-30T11:49:22.908Z"
+  },
+  {
+    "txIndex": 28,
+    "userIndex": 27,
+    "periodId": "2026-P05-4",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod11a9b59ad31cb7b929328950fcbb1032a3afe11",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 346,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xc3196bd22064535231fdf5543435caa59699beb69a1ee9599ad57d2f0239ac99",
+    "blockNumber": 2776558,
+    "timestamp": "2026-09-30T11:52:22.908Z"
+  },
+  {
+    "txIndex": 29,
+    "userIndex": 28,
+    "periodId": "2026-P05-5",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod1e9f84c678327d84a32d2f8720ee4e00e25a57a",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 259,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x74da49e9c2b4eeef96b4c16a8681c8c74043f54c67c7012e688d7eec1e9dc68a",
+    "blockNumber": 2776560,
+    "timestamp": "2026-09-30T11:55:22.908Z"
+  },
+  {
+    "txIndex": 30,
+    "userIndex": 29,
+    "periodId": "2026-P05-6",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod1a316b4e17ba25fdaa2fe53baa5237dc9af2d3a",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 177,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x030d781c77ba71c64253aca84c83064c294eaaf5fa5af2ad18096aa5a57ed237",
+    "blockNumber": 2776562,
+    "timestamp": "2026-09-30T11:58:22.908Z"
+  },
+  {
+    "txIndex": 31,
+    "userIndex": 30,
+    "periodId": "2026-P06-1",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod196ead572485ae92acdd25a5b462cbd7798ce49",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 180,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xfe43cded31c40555ed73fbd0f545c82ad3cc622e36e8fa9bf1bb4d8144b3f862",
+    "blockNumber": 2776564,
+    "timestamp": "2026-09-30T12:01:22.908Z"
+  },
+  {
+    "txIndex": 32,
+    "userIndex": 31,
+    "periodId": "2026-P06-2",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod10eac9ee86478485c3e8cdd9c29c7c04b3164ee",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 183,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xc6aacbf71dd3ca1764273970e96b983bfa3a8439a1aa4b2a98faa31280ef8b74",
+    "blockNumber": 2776565,
+    "timestamp": "2026-09-30T12:04:22.908Z"
+  },
+  {
+    "txIndex": 33,
+    "userIndex": 32,
+    "periodId": "2026-P06-3",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod12f323fa255ec9ad598c2e4c70db285fb7b077a",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 186,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x89e39deb35325124f874a5419784b42d4c0a55f40282df0d862730dce5b7f494",
+    "blockNumber": 2776567,
+    "timestamp": "2026-09-30T12:07:22.908Z"
+  },
+  {
+    "txIndex": 34,
+    "userIndex": 33,
+    "periodId": "2026-P06-4",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod1ce598b93d7f91f851722bf16a0024b9c73b31a",
+    "privateMetrics": {
+      "uptimeBps": 9962,
+      "uptimePercent": "99.62%",
+      "latencyP95Ms": 189,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x1984b18c2ea2b1953bfc3c1bee6ad200585ac33aeac2e275094c3a5dc2ef8af6",
+    "blockNumber": 2776569,
+    "timestamp": "2026-09-30T12:10:22.908Z"
+  },
+  {
+    "txIndex": 35,
+    "userIndex": 34,
+    "periodId": "2026-P06-5",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod166c36658b0ba9fbca911aec0ce006a5d59b7cc",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 192,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xa8bd695578fc08f8ae62ca8d6a4a9465483d0dea5b2312f1b840666198141718",
+    "blockNumber": 2776571,
+    "timestamp": "2026-09-30T12:13:22.908Z"
+  },
+  {
+    "txIndex": 36,
+    "userIndex": 35,
+    "periodId": "2026-P06-6",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod173cbd5e529ea4bd11fd1438d155835b8b41822",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 195,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x7d95a2289798427cdce29caa33ead369a1181ba46d1f90e6cecc2830d942a0e1",
+    "blockNumber": 2776573,
+    "timestamp": "2026-09-30T12:16:22.908Z"
+  },
+  {
+    "txIndex": 37,
+    "userIndex": 36,
+    "periodId": "2026-P07-1",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod1c8d988edf821d274f888c41d479046b4867193",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 288,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xec55f1c67c71550e2342031ba25720e9c5dbe839b136f84031ebc3bb7f2c3578",
+    "blockNumber": 2776574,
+    "timestamp": "2026-09-30T12:19:22.908Z"
+  },
+  {
+    "txIndex": 38,
+    "userIndex": 37,
+    "periodId": "2026-P07-2",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1db528b05ce968be69f3a92830010a74cd8f7a6",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 201,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf1c01881ba6c896650f6c6c63a29bb2df0ccf36823121cd451a6643ae14de55f",
+    "blockNumber": 2776576,
+    "timestamp": "2026-09-30T12:22:22.908Z"
+  },
+  {
+    "txIndex": 39,
+    "userIndex": 38,
+    "periodId": "2026-P07-3",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod1ec605b96ed6539e743b0f8bc00d77b0704930c",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 204,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xd3d0150dc98eb97c4768b213d4d59f5645941e930e83c774d0363259a98e9c76",
+    "blockNumber": 2776578,
+    "timestamp": "2026-09-30T12:25:22.908Z"
+  },
+  {
+    "txIndex": 40,
+    "userIndex": 39,
+    "periodId": "2026-P07-4",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod14b8e80ed3f557e51ca5329a421aeb279fc9bb1",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 207,
+      "incidentCount": 4
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xc679ab4c843c04a8295c426c3d4912487b8941ddf880ed18a7d0984d53735904",
+    "blockNumber": 2776580,
+    "timestamp": "2026-09-30T12:28:22.908Z"
+  },
+  {
+    "txIndex": 41,
+    "userIndex": 40,
+    "periodId": "2026-P07-5",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod10799268f63c1e400cef68359351ebf9f1ee4f2",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 210,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x1ae36e0b6ca9ee52436536ec0f01a0b7fbce7361859c4bed73a140276c039915",
+    "blockNumber": 2776582,
+    "timestamp": "2026-09-30T12:31:22.908Z"
+  },
+  {
+    "txIndex": 42,
+    "userIndex": 41,
+    "periodId": "2026-P07-6",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod18de74eb668fc2ae6c0c5dd548b40d504cc84a9",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 213,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb3c950af53959d2e587128605d239a03cb4bd43866dc17b78037783da0d41f54",
+    "blockNumber": 2776583,
+    "timestamp": "2026-09-30T12:34:22.908Z"
+  },
+  {
+    "txIndex": 43,
+    "userIndex": 42,
+    "periodId": "2026-P08-1",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod151d866f9a39e080a89a900c7ba4ba98857d197",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 216,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xe473b3dbdf52ffffd559f6adafb61c83cfdb0002e2a2ec7b3a45b6193ab6d4bb",
+    "blockNumber": 2776585,
+    "timestamp": "2026-09-30T12:37:22.908Z"
+  },
+  {
+    "txIndex": 44,
+    "userIndex": 43,
+    "periodId": "2026-P08-2",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod178d77c119ad04db411e596a4e9e68e6e7789d5",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 219,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x7ece93ca65c54406128daaa94446308c5163cf6b176ee3903a021cbccdb33260",
+    "blockNumber": 2776587,
+    "timestamp": "2026-09-30T12:40:22.908Z"
+  },
+  {
+    "txIndex": 45,
+    "userIndex": 44,
+    "periodId": "2026-P08-3",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1ea5a69590719c95de5409ec62235c898089cab",
+    "privateMetrics": {
+      "uptimeBps": 9959,
+      "uptimePercent": "99.59%",
+      "latencyP95Ms": 222,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0xe060c9846fd3249f1b3b0109d23918ba19ed34202196ca0c991e1697bdcfd1d1",
+    "blockNumber": 2776589,
+    "timestamp": "2026-09-30T12:43:22.908Z"
+  },
+  {
+    "txIndex": 46,
+    "userIndex": 45,
+    "periodId": "2026-P08-4",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod138d1b69dbd35b364b3f62d436f1be128d58054",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 315,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x883a94b41287d18d0ef1afe4858dde25487a079b3a2185a4fbe3a71ec19097f0",
+    "blockNumber": 2776591,
+    "timestamp": "2026-09-30T12:46:22.908Z"
+  },
+  {
+    "txIndex": 47,
+    "userIndex": 46,
+    "periodId": "2026-P08-5",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1ca7f60685a69b8ad8c796ae98fd2ecf83884c4",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 228,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf65e187d3ec6f9afa41ca5c260ab5ebcb91f328a5c2fba24ce36ef1349195af9",
+    "blockNumber": 2776592,
+    "timestamp": "2026-09-30T12:49:22.908Z"
+  },
+  {
+    "txIndex": 48,
+    "userIndex": 47,
+    "periodId": "2026-P08-6",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod107ee74ce43d75c97121f94f7064e609166dba9",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 231,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x650bb17c9c7333b9e02a944525ac4a40b81a0273755ffa1ddc6fecf17789c13a",
+    "blockNumber": 2776594,
+    "timestamp": "2026-09-30T12:52:22.908Z"
+  },
+  {
+    "txIndex": 49,
+    "userIndex": 48,
+    "periodId": "2026-P09-1",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod15249b50618b17eb781e318af0e464801dfd5b6",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 234,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x0f6b80aeee3e6c7ab6a6291aed6eb83d16448592a4012e743e2d984e43155556",
+    "blockNumber": 2776596,
+    "timestamp": "2026-09-30T12:55:22.908Z"
+  },
+  {
+    "txIndex": 50,
+    "userIndex": 49,
+    "periodId": "2026-P09-2",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod1731e177f06105d8d97c273fb9715ba2018f322",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 237,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x7a497125f24797745548d8fc373c1ca25ae3415317552dfce994d38dc9cacd6b",
+    "blockNumber": 2776598,
+    "timestamp": "2026-09-30T12:58:22.908Z"
+  },
+  {
+    "txIndex": 51,
+    "userIndex": 50,
+    "periodId": "2026-P09-3",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod1a158174e00689ac9d9c9588a3db351b3e6611b",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 240,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xdad8d5ac9094ea84a0f7813c4fdadb0d0464103f53816542c4247444e00f8126",
+    "blockNumber": 2776600,
+    "timestamp": "2026-09-30T13:01:22.908Z"
+  },
+  {
+    "txIndex": 52,
+    "userIndex": 51,
+    "periodId": "2026-P09-4",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1848d0424faa14deb2b50a44e3c7c9b6d018d69",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 243,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x417143a0a1d2269dbc32fad5bc4c781a36d83e70cc4a2e48b36eb031846d40d3",
+    "blockNumber": 2776601,
+    "timestamp": "2026-09-30T13:04:22.908Z"
+  },
+  {
+    "txIndex": 53,
+    "userIndex": 52,
+    "periodId": "2026-P09-5",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod1c1dbdce394ae8e10476ce14c8b56aa5935a54f",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 246,
+      "incidentCount": 4
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xfa1821120e2300bc6811825557af5445f4b71abaeb1c4d84896fd7c8075a8c14",
+    "blockNumber": 2776603,
+    "timestamp": "2026-09-30T13:07:22.908Z"
+  },
+  {
+    "txIndex": 54,
+    "userIndex": 53,
+    "periodId": "2026-P09-6",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod185067ed856ff862bb2345de153b081d9f24487",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 249,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb63f91e234660b2a4bc0fc43a969ba88ebeb0d685c57bccd05ea457f867b2336",
+    "blockNumber": 2776605,
+    "timestamp": "2026-09-30T13:10:22.908Z"
+  },
+  {
+    "txIndex": 55,
+    "userIndex": 54,
+    "periodId": "2026-P10-1",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod1ca5c0e76ae66ef8ac16d396915140770304409",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 342,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x1fbb18b20822bccb00377977e2410213010cafb75cdacf310e417b81ad77e3ef",
+    "blockNumber": 2776607,
+    "timestamp": "2026-09-30T13:13:22.908Z"
+  },
+  {
+    "txIndex": 56,
+    "userIndex": 55,
+    "periodId": "2026-P10-2",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod156faec30beda59451563c15e9058d29869d747",
+    "privateMetrics": {
+      "uptimeBps": 9963,
+      "uptimePercent": "99.63%",
+      "latencyP95Ms": 255,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x66888076a9b8fb16fa985cba0eb2472d5ed8df1cf458dc9b8eb6069cd1443e10",
+    "blockNumber": 2776609,
+    "timestamp": "2026-09-30T13:16:22.908Z"
+  },
+  {
+    "txIndex": 57,
+    "userIndex": 56,
+    "periodId": "2026-P10-3",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod159fe60953915d4a5751de73ce1c74875f7e6d8",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 258,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0x3b7ca33988f9f6435b5ba4c5e65621bf9a91af81aa00ab8cbb25c2801b31a1d9",
+    "blockNumber": 2776610,
+    "timestamp": "2026-09-30T13:19:22.908Z"
+  },
+  {
+    "txIndex": 58,
+    "userIndex": 57,
+    "periodId": "2026-P10-4",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod152b8fa86fbfc2c4619867b30f17e0c850a0572",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 176,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xae3c0679299c3373f40f08386d78bac02064a6f127e86780bc4a37c4a0adde6b",
+    "blockNumber": 2776612,
+    "timestamp": "2026-09-30T13:22:22.908Z"
+  },
+  {
+    "txIndex": 59,
+    "userIndex": 58,
+    "periodId": "2026-P10-5",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1ef89fd390cacad604be85cc4e334597d2cd30c",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 179,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x7097685d6ae6f23f1984061089ee813137c0f4089b316fc472b622ba816c04ab",
+    "blockNumber": 2776614,
+    "timestamp": "2026-09-30T13:25:22.908Z"
+  },
+  {
+    "txIndex": 60,
+    "userIndex": 59,
+    "periodId": "2026-P10-6",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod13674af413ac55b7184a0f0516cc031a7200861",
+    "privateMetrics": {
+      "uptimeBps": 9995,
+      "uptimePercent": "99.95%",
+      "latencyP95Ms": 182,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xb0173a5bd4d0fd014b269742d79743426b6b91e6412da8cabc0f539b233ab1b5",
+    "blockNumber": 2776616,
+    "timestamp": "2026-09-30T13:28:22.909Z"
+  },
+  {
+    "txIndex": 61,
+    "userIndex": 60,
+    "periodId": "2026-P11-1",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1b3a7352ca9c3859ca0d3b82bbcddf072b9be8b",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 185,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x6703b9f5c6d49c1c4f208816485b01f71bcd5eefd288d9fa7467c4094f5a0c30",
+    "blockNumber": 2776618,
+    "timestamp": "2026-09-30T13:31:22.909Z"
+  },
+  {
+    "txIndex": 62,
+    "userIndex": 61,
+    "periodId": "2026-P11-2",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod1bedf72f37c1db36474a8519a611c5194936b09",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 188,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xdab318a8b47500f2170ccf1e1d275a31556ff1f6df15d4dd66ceaa01a45acc27",
+    "blockNumber": 2776619,
+    "timestamp": "2026-09-30T13:34:22.909Z"
+  },
+  {
+    "txIndex": 63,
+    "userIndex": 62,
+    "periodId": "2026-P11-3",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod1c471bd83e6f8b04cb1d6174731ccc6d0ea20e8",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 191,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x6c811b92eb954b2bfe8f99ed7cf0b19efadda6af199e1ed1f864d34e5a096b9f",
+    "blockNumber": 2776621,
+    "timestamp": "2026-09-30T13:37:22.909Z"
+  },
+  {
+    "txIndex": 64,
+    "userIndex": 63,
+    "periodId": "2026-P11-4",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod13ed43e85fde56982a7ab714f4a293405895d31",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 284,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "10%",
+    "txHash": "0xc93afc2fb03db5ddacb01f84b7348c3547bde2ab0b4f43786cbca3c72eb9b588",
+    "blockNumber": 2776623,
+    "timestamp": "2026-09-30T13:40:22.909Z"
+  },
+  {
+    "txIndex": 65,
+    "userIndex": 64,
+    "periodId": "2026-P11-5",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod1c6fd16d278bfc9e387c2bae3d2aa63a597cec0",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 197,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x42fd40ff78be83ef10cc0795c59800e5e79242ed3b03d9148bc00ebaa1a8aa75",
+    "blockNumber": 2776625,
+    "timestamp": "2026-09-30T13:43:22.909Z"
+  },
+  {
+    "txIndex": 66,
+    "userIndex": 65,
+    "periodId": "2026-P11-6",
+    "applicantRole": "Enterprise SaaS Vendor",
+    "preprodAddress": "mn_addr_preprod1e89607efe569a6e0ca4f8b6c372e5cb684f6b9",
+    "privateMetrics": {
+      "uptimeBps": 9994,
+      "uptimePercent": "99.94%",
+      "latencyP95Ms": 200,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xadb5e574c2c4af13d01cd5c34a7c481449574ede40a662304e1fc745a3b8ce47",
+    "blockNumber": 2776627,
+    "timestamp": "2026-09-30T13:46:22.909Z"
+  },
+  {
+    "txIndex": 67,
+    "userIndex": 66,
+    "periodId": "2026-P12-1",
+    "applicantRole": "Decentralized RPC Operator",
+    "preprodAddress": "mn_addr_preprod1107c07bf15d80774d0f4d0803c19a143cac77a",
+    "privateMetrics": {
+      "uptimeBps": 9960,
+      "uptimePercent": "99.60%",
+      "latencyP95Ms": 203,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "BREACH",
+    "creditBand": "25%",
+    "txHash": "0x13e05d9332e43004d628fde68a6bac4439bce5c810040d1a71c063033c2792a9",
+    "blockNumber": 2776628,
+    "timestamp": "2026-09-30T13:49:22.909Z"
+  },
+  {
+    "txIndex": 68,
+    "userIndex": 67,
+    "periodId": "2026-P12-2",
+    "applicantRole": "Managed Security Service Provider",
+    "preprodAddress": "mn_addr_preprod1d749df2c7c1e83e5d731bb21aae5dc4c7dad3a",
+    "privateMetrics": {
+      "uptimeBps": 9996,
+      "uptimePercent": "99.96%",
+      "latencyP95Ms": 206,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf7a358b89bf6dc83f54acbd45a4e15d77f6030ddac95c2deddd809bf89ae0694",
+    "blockNumber": 2776630,
+    "timestamp": "2026-09-30T13:52:22.909Z"
+  },
+  {
+    "txIndex": 69,
+    "userIndex": 68,
+    "periodId": "2026-P12-3",
+    "applicantRole": "High-Frequency Payment Switch",
+    "preprodAddress": "mn_addr_preprod13ace9fe3f0ee072bffd66e42e2e689923b4f33",
+    "privateMetrics": {
+      "uptimeBps": 9997,
+      "uptimePercent": "99.97%",
+      "latencyP95Ms": 209,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x0d655eecf9c7fd7ac43ecd2cc95c27b9d96aab130b5784f34d85c656aeaac4e7",
+    "blockNumber": 2776632,
+    "timestamp": "2026-09-30T13:55:22.909Z"
+  },
+  {
+    "txIndex": 70,
+    "userIndex": 69,
+    "periodId": "2026-P12-4",
+    "applicantRole": "Distributed Database Cluster",
+    "preprodAddress": "mn_addr_preprod1f4935273345ac2b4c7bd5bef4151a7ffc8b8dc",
+    "privateMetrics": {
+      "uptimeBps": 9998,
+      "uptimePercent": "99.98%",
+      "latencyP95Ms": 212,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xf9a4f9ed724cbf105c8f2a929f8b952d120001c3fe085c73590b046aaa67b90f",
+    "blockNumber": 2776634,
+    "timestamp": "2026-09-30T13:58:22.909Z"
+  },
+  {
+    "txIndex": 71,
+    "userIndex": 70,
+    "periodId": "2026-P12-5",
+    "applicantRole": "Cloud Infrastructure Provider",
+    "preprodAddress": "mn_addr_preprod1d1bdcca5d1709d20555e45fd4818ca04f7e286",
+    "privateMetrics": {
+      "uptimeBps": 9992,
+      "uptimePercent": "99.92%",
+      "latencyP95Ms": 215,
+      "incidentCount": 2
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0x7527deb184a4f31d413f297617e71876f7119f1a937b35669d271733812a8cb3",
+    "blockNumber": 2776636,
+    "timestamp": "2026-09-30T14:01:22.909Z"
+  },
+  {
+    "txIndex": 72,
+    "userIndex": 71,
+    "periodId": "2026-P12-6",
+    "applicantRole": "Financial Core Gateway",
+    "preprodAddress": "mn_addr_preprod115bfe89ab0eab733931276088c29d688b0c9e1",
+    "privateMetrics": {
+      "uptimeBps": 9993,
+      "uptimePercent": "99.93%",
+      "latencyP95Ms": 218,
+      "incidentCount": 1
+    },
+    "policyThresholds": {
+      "minUptimeBps": 9990,
+      "maxLatencyP95Ms": 250,
+      "maxIncidents": 3
+    },
+    "onChainVerdict": "COMPLIANT",
+    "creditBand": "0%",
+    "txHash": "0xd89be37b3b6d896df159ad4cf3406b4e98f1b6a18c39b066b2eae7c08eb5330b",
+    "blockNumber": 2776637,
+    "timestamp": "2026-09-30T14:04:22.909Z"
+  }
+]
