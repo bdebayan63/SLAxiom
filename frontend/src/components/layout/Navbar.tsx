@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NetworkId, NETWORK_CONFIGS } from '../../lib/networkConfig';
 import { truncateAddress, getExplorerContractUrl } from '../../lib/addressUtils';
-import { Shield, Globe, ChevronDown, ExternalLink, LogOut, Check, LayoutDashboard, FileCode2, Cpu, Coins, FileBadge2, Copy, CheckCheck } from 'lucide-react';
+import { Shield, Globe, ExternalLink, LogOut, Check, LayoutDashboard, FileCode2, Cpu, Coins, FileBadge2, Copy, CheckCheck } from 'lucide-react';
 import { WalletProviderId } from '../../hooks/useWallet';
 
 export type AppTab = 'dashboard' | 'policy-studio' | 'prover' | 'settlement' | 'audit';
@@ -35,7 +35,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onDisconnectWallet,
   onToggleMobileDrawer,
 }) => {
-  const [networkDropdownOpen, setNetworkDropdownOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const config = NETWORK_CONFIGS[currentNetwork];
   const contractExplorerUrl = getExplorerContractUrl(currentNetwork, config.contractAddress);
@@ -117,47 +116,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Action Tools */}
         <div className="flex items-center gap-3 shrink-0">
-          {/* Network Indicator / Switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setNetworkDropdownOpen(!networkDropdownOpen)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200/70 border border-slate-200 text-xs font-semibold text-slate-700 transition"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600" />
-              </span>
-              <Globe className="w-3.5 h-3.5 text-slate-500" />
-              <span>{config.badgeLabel}</span>
-              <ChevronDown className="w-3 h-3 text-slate-400" />
-            </button>
-
-            {/* Network Dropdown Menu */}
-            {networkDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white border border-slate-200 py-1 shadow-xl z-50">
-                <div className="px-3 py-1.5 text-[10px] font-mono text-slate-400 uppercase tracking-wider border-b border-slate-100">
-                  Target Network
-                </div>
-                {(['preprod'] as NetworkId[]).map((netId) => {
-                  return (
-                    <button
-                      key={netId}
-                      onClick={() => {
-                        onNetworkChange(netId);
-                        setNetworkDropdownOpen(false);
-                      }}
-                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-left hover:bg-slate-50 text-slate-800 transition"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-600" />
-                        <span>{NETWORK_CONFIGS[netId].name}</span>
-                      </div>
-                      <Check className="w-3.5 h-3.5 text-purple-600" />
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+          {/* Network Indicator Badge */}
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600" />
+            </span>
+            <Globe className="w-3.5 h-3.5 text-slate-500" />
+            <span>Midnight Preprod</span>
+            <span className="px-1 py-0.2 rounded text-[9px] font-mono font-bold bg-purple-100 text-purple-800 border border-purple-200">
+              ACTIVE
+            </span>
           </div>
 
           {/* Primary Wallet Action Button */}

@@ -156,7 +156,7 @@ export function useWallet(currentNetwork: NetworkId) {
     try {
       if (providerId === 'explorer') {
         // Read-Only Explorer Mode (explicitly chosen for non-extension evaluation)
-        const prefix = currentNetwork === 'preprod' ? 'mn_addr_preprod1' : 'mn_addr_preview1';
+        const prefix = 'mn_addr_preprod1';
         const explorerAddress = `${prefix}explorer_readonly_audit_session`;
         setState({
           isConnected: true,

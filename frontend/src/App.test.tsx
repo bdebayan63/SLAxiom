@@ -23,17 +23,13 @@ describe('SLAxiom Frontend Unit Tests', () => {
   });
 
   it('generates strictly PLURAL endpoints for Midnight Block Explorer URLs', () => {
-    const contractAddr = 'c5259240679f809e9d183632b9e65830fb899e3280c042148b10df4e89ad6f68';
-    const txHash = 'bdf9c3655c0d7d17dbbf5477129524d803d9d97dba8c02458153119c5b2a6234';
+    const contractAddr = 'fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b';
+    const txHash = '311e9274699c7a0f1841fed2420eb60e2c6bd2e3dfe385c0625607ea70af9347';
 
     // Verify Preprod contract plural URL
     const preprodContractUrl = getExplorerContractUrl('preprod', contractAddr);
     expect(preprodContractUrl).toBe(`https://preprod.midnightexplorer.com/contracts/${contractAddr}`);
     expect(preprodContractUrl).not.toContain('/contract/');
-
-    // Verify Preview contract plural URL
-    const previewContractUrl = getExplorerContractUrl('preview', contractAddr);
-    expect(previewContractUrl).toBe(`https://preview.midnightexplorer.com/contracts/${contractAddr}`);
 
     // Verify Preprod transaction plural URL
     const preprodTxUrl = getExplorerTxUrl('preprod', txHash);
@@ -41,19 +37,14 @@ describe('SLAxiom Frontend Unit Tests', () => {
     expect(preprodTxUrl).not.toContain('/tx/');
   });
 
-  it('maintains valid network endpoints for both Preview and Preprod', () => {
-    const preview = NETWORK_CONFIGS.preview;
+  it('maintains valid network endpoints for Midnight Preprod Testnet', () => {
     const preprod = NETWORK_CONFIGS.preprod;
-
-    expect(preview.rpcUrl).toContain('preview.midnight.network');
-    expect(preview.indexerUrl).toContain('preview.midnight.network/api/v4/graphql');
-    expect(preview.contractAddress).toHaveLength(64);
-    expect(preview.contractAddress).not.toMatch(/^0x/i);
 
     expect(preprod.rpcUrl).toContain('preprod.midnight.network');
     expect(preprod.indexerUrl).toContain('preprod.midnight.network/api/v4/graphql');
     expect(preprod.contractAddress).toHaveLength(64);
     expect(preprod.contractAddress).not.toMatch(/^0x/i);
+    expect(preprod.contractAddress).toBe('fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b');
   });
 
   it('proves SLA compliance with 0% credit band when all predicates hold', async () => {

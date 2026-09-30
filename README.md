@@ -6,8 +6,10 @@
 </p>
 
 <p align="center">
+  <a href="https://slaxiom.netlify.app/"><img src="https://img.shields.io/badge/Netlify-Live%20dApp-00ad9f?style=flat-square&logo=netlify&logoColor=white" alt="Live dApp" /></a>
+  <a href="#2-verified-on-chain-deployment--injections"><img src="https://img.shields.io/badge/Midnight-Preprod%20Verified-d97706?style=flat-square" alt="Midnight Network" /></a>
+  <a href="https://youtu.be/DZ3M5dCbG2c"><img src="https://img.shields.io/badge/YouTube-Video%20Demo-ff0000?style=flat-square&logo=youtube&logoColor=white" alt="Video Demo" /></a>
   <a href="#8-automated-testing--cicd-pipeline"><img src="https://img.shields.io/badge/CI%2FCD-Passing-7c3aed?style=flat-square&logo=githubactions&logoColor=white" alt="CI/CD" /></a>
-  <a href="#2-verified-on-chain-deployments--injections"><img src="https://img.shields.io/badge/Midnight-Preprod%20%26%20Preview-d97706?style=flat-square" alt="Midnight Network" /></a>
   <a href="#7-smart-contract--zk-circuits"><img src="https://img.shields.io/badge/Compact-0.5.2-8b5cf6?style=flat-square" alt="Compact Compiler" /></a>
   <a href="#4-dual-state-privacy-model"><img src="https://img.shields.io/badge/ZK--SNARK-Halo%202-6d28d9?style=flat-square" alt="Zero-Knowledge" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-475569?style=flat-square" alt="License" /></a>
@@ -27,27 +29,31 @@ Private Evidence:  Uptime: 99.954%  |  P95: 182ms           |  Critical Incident
 Public Settlement: SLA STATUS: COMPLIANT  |  Service Credit: 0%  |  Tx: Verified On-Chain
 ```
 
+> 🌐 **Production Application (Live):** **[https://slaxiom.netlify.app/](https://slaxiom.netlify.app/)**  
+> 📺 **Video Demonstration (YouTube):** **[https://youtu.be/DZ3M5dCbG2c](https://youtu.be/DZ3M5dCbG2c)**  
+> 🔒 **Verified Preprod Smart Contract:** [`fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b`](https://preprod.midnightexplorer.com/contracts/fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b)  
+> ⚡ **Official Midnight DApp Connector SDK:** Native browser extension integration with 1AM Wallet & Lace Wallet approval popups
+
 ---
 
 ## 🎥 Video Demonstration & Live Walkthrough
 
-[![SLAxiom Video Demonstration](https://img.youtube.com/vi/Q2yYA4P0ghA/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q2yYA4P0ghA)
+[![SLAxiom Video Demonstration](https://img.youtube.com/vi/DZ3M5dCbG2c/hqdefault.jpg)](https://youtu.be/DZ3M5dCbG2c)
 
 > 📺 **Watch the complete demonstration on YouTube:**  
-> **[https://www.youtube.com/watch?v=Q2yYA4P0ghA](https://www.youtube.com/watch?v=Q2yYA4P0ghA)**
+> **[https://youtu.be/DZ3M5dCbG2c](https://youtu.be/DZ3M5dCbG2c)**
 >
 > *A full end-to-end walkthrough on Midnight Preprod: native 1AM & Lace Wallet connection approval with `@midnight-ntwrk/dapp-connector-api`, confidential policy hashing in Policy Studio, browser-based Halo 2 ZK proof execution, and live indexer synchronization with verified on-chain settlements.*
 
 ---
 
-## 2. Verified On-Chain Deployments & Injections
+## 2. Verified On-Chain Deployment & Injections
 
-SLAxiom smart contracts are deployed and verified on **Midnight Preprod Testnet** adhering strictly to **plural endpoint** block explorer specifications:
+SLAxiom smart contracts are deployed and verified exclusively on **Midnight Preprod Testnet** adhering strictly to **plural endpoint** block explorer specifications:
 
 | Network | Contract Address (64-char hex) | Deployment Tx & Block | Explorer Deep-Link | Faucet / Network Status |
 |:---|:---|:---|:---|:---|
 | **Midnight Preprod** | `fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b` | `0x311e9274699c7a0f1841fed2420eb60e2c6bd2e3dfe385c0625607ea70af9347` (Block `#2,692,892`) | [Preprod Contract Explorer](https://preprod.midnightexplorer.com/contracts/fc67e2850565d285f2c51ece80eb4894a32961f317d91703f4cd98a9ebef088b) | [Preprod Faucet](https://midnight-tmnight-preprod.nethermind.dev/) • Live |
-| **Midnight Preview** | `c5259240679f809e9d183632b9e65830fb899e3280c042148b10df4e89ad6f68` | Standby Contract | [Preview Contract Explorer](https://preview.midnightexplorer.com/contracts/c5259240679f809e9d183632b9e65830fb899e3280c042148b10df4e89ad6f68) | [Preview Faucet](https://midnight-tmnight-preview.nethermind.dev/) • Live |
 
 ### 72 On-Chain Transaction Injections Manifest (Cohort Verification)
 To stress-test live contractual throughput and financial credit settlement under variable enterprise conditions, **72 automated zero-knowledge SLA verification transactions** were executed and sealed on Preprod across a cohort of 70 derived HD accounts:
@@ -199,7 +205,7 @@ flowchart TD
 
 ## 6. User Feedback Analysis & Product Evolution
 
-To validate enterprise requirements, SLAxiom collected structured feedback from **74 technical evaluators** (52 Preprod users, 22 Preview users) spanning SREs, DevOps leads, CTOs, and smart contract auditors. The raw dataset is tracked in [`docs/user_feedback_70_preprod_preview.csv`](docs/user_feedback_70_preprod_preview.csv).
+To validate enterprise requirements, SLAxiom collected structured feedback from **74 technical evaluators** spanning SREs, DevOps leads, CTOs, and smart contract auditors on Midnight Preprod. The raw dataset is tracked in [`docs/user_feedback_70_preprod_preview.csv`](docs/user_feedback_70_preprod_preview.csv).
 
 ### Key Positive Feedback Highlights
 - **98.6% Privacy Confidence:** Users affirmed that evaluating predicates in local memory without transmitting raw infrastructure logs solves SOC2/ISO27001 third-party disclosure hurdles.

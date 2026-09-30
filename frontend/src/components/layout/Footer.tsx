@@ -14,7 +14,6 @@ export const Footer: React.FC<FooterProps> = ({
   feedbackUrl = 'https://forms.gle/SLAxiomFeedback2026',
   xProfileUrl = 'https://x.com/SLAxiomPrivacy',
 }) => {
-  const previewContract = NETWORK_CONFIGS.preview.contractAddress;
   const preprodContract = NETWORK_CONFIGS.preprod.contractAddress;
 
   return (
@@ -57,16 +56,19 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 2: Verified On-Chain Deployments */}
           <div className="space-y-2.5 md:col-span-2">
             <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
-              Verified On-Chain Contract Deployments
+              Verified On-Chain Contract Deployment
             </span>
             <div className="space-y-2">
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-600" />
-                    <span className="text-xs font-semibold text-slate-800">Midnight Preprod</span>
+                    <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
+                    <span className="text-xs font-semibold text-slate-800">Midnight Preprod Testnet</span>
+                    <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-purple-100 text-purple-800 border border-purple-200">
+                      LIVE
+                    </span>
                   </div>
-                  <span className="text-[11px] font-mono text-slate-500 break-all">
+                  <span className="text-[11px] font-mono text-slate-500 break-all select-all">
                     {preprodContract}
                   </span>
                 </div>
@@ -77,27 +79,6 @@ export const Footer: React.FC<FooterProps> = ({
                   className="inline-flex items-center gap-1 text-[11px] text-purple-700 hover:text-purple-900 hover:underline shrink-0 font-medium"
                 >
                   <span>Preprod Explorer</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
-
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-500" />
-                    <span className="text-xs font-semibold text-slate-800">Midnight Preview</span>
-                  </div>
-                  <span className="text-[11px] font-mono text-slate-500 break-all">
-                    {previewContract}
-                  </span>
-                </div>
-                <a
-                  href={getExplorerContractUrl('preview', previewContract)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] text-purple-700 hover:text-purple-900 hover:underline shrink-0 font-medium"
-                >
-                  <span>Preview Explorer</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>

@@ -108,28 +108,19 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               </div>
             </div>
 
-            {/* Network Switching Section */}
+            {/* Network Section */}
             <div className="space-y-2">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
                 Target Network
               </span>
-              <div className="grid grid-cols-2 gap-2">
-                {(['preprod', 'preview'] as NetworkId[]).map((netId) => {
-                  const isActive = currentNetwork === netId;
-                  return (
-                    <button
-                      key={netId}
-                      onClick={() => onNetworkChange(netId)}
-                      className={`p-2.5 rounded-lg text-xs font-medium border text-center transition ${
-                        isActive
-                          ? 'bg-purple-50 border-purple-500 text-purple-700 font-bold'
-                          : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      {NETWORK_CONFIGS[netId].badgeLabel}
-                    </button>
-                  );
-                })}
+              <div className="p-2.5 rounded-lg bg-purple-50 border border-purple-200 text-xs font-semibold text-purple-900 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
+                  <span>{NETWORK_CONFIGS.preprod.name}</span>
+                </div>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-100 text-purple-800 border border-purple-300">
+                  LIVE
+                </span>
               </div>
             </div>
 

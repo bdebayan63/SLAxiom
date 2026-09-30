@@ -181,7 +181,7 @@ export const WalletModal: React.FC<WalletModalProps> = ({
                       )}
                     </div>
                     <p className="text-[11px] text-slate-500 mt-0.5">
-                      Ecosystem Web3 wallet with Midnight Preview & Preprod support.
+                      Ecosystem Web3 wallet with Midnight Preprod testnet support.
                     </p>
                   </div>
                 </div>
