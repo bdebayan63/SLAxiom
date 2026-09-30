@@ -1,8 +1,8 @@
 # SLAxiom — Netlify Deployment Configuration
 
 [build]
-  command = "npm run build:frontend"
-  publish = "frontend/dist"
+  command = "node scripts/build.js"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
