@@ -29,6 +29,17 @@ Public Settlement: SLA STATUS: COMPLIANT  |  Service Credit: 0%  |  Tx: Verified
 
 ---
 
+## 🎥 Video Demonstration & Live Walkthrough
+
+[![SLAxiom Video Demonstration](https://img.youtube.com/vi/Q2yYA4P0ghA/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q2yYA4P0ghA)
+
+> 📺 **Watch the complete demonstration on YouTube:**  
+> **[https://www.youtube.com/watch?v=Q2yYA4P0ghA](https://www.youtube.com/watch?v=Q2yYA4P0ghA)**
+>
+> *A full end-to-end walkthrough on Midnight Preprod: native 1AM & Lace Wallet connection approval with `@midnight-ntwrk/dapp-connector-api`, confidential policy hashing in Policy Studio, browser-based Halo 2 ZK proof execution, and live indexer synchronization with verified on-chain settlements.*
+
+---
+
 ## 2. Verified On-Chain Deployments & Injections
 
 SLAxiom smart contracts are deployed and verified on **Midnight Preprod Testnet** adhering strictly to **plural endpoint** block explorer specifications:
