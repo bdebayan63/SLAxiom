@@ -20,7 +20,7 @@ import { useWallet } from './hooks/useWallet';
 import { useLiveChainStatus } from './hooks/useLiveChainStatus';
 import { NetworkId, NETWORK_CONFIGS } from './lib/networkConfig';
 import { SlaPolicy, PrivateMetricsWitness, ZkProofVerificationResult, proveSlaCompliance } from './lib/contractApi';
-import { Shield, Lock, Cpu, Sparkles, FileCode2, Coins, FileBadge2, ArrowRight } from 'lucide-react';
+import { Shield, ShieldCheck, Lock, Cpu, Sparkles, FileCode2, Coins, FileBadge2, ArrowRight } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [network, setNetwork] = useState<NetworkId>('preprod');
@@ -234,23 +234,29 @@ export const App: React.FC = () => {
             </section>
 
             {/* HERO VISUAL BANNER */}
-            <section className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl">
-              <img
-                src="/images/slaxiom_hero_vault.jpg"
-                alt="SLAxiom Cryptographic Vault"
-                className="w-full h-48 sm:h-64 object-cover object-center brightness-95 contrast-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-6 sm:p-8 flex flex-col justify-end">
-                <div className="max-w-2xl space-y-1">
-                  <span className="text-xs font-mono uppercase tracking-wider text-purple-300 font-semibold">
-                    Autonomous Zero-Knowledge Verification
+            <section className="relative rounded-2xl overflow-hidden border border-purple-200/80 bg-gradient-to-br from-purple-950 via-slate-900 to-slate-950 p-6 sm:p-8 shadow-xl">
+              <div className="absolute -right-6 -bottom-6 w-56 h-56 opacity-15 pointer-events-none select-none">
+                <img src="/logo-shield.svg" alt="" className="w-full h-full" />
+              </div>
+              <div className="relative z-10 max-w-2xl space-y-2">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-[11px] font-mono uppercase tracking-wider text-purple-200 font-semibold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                  Autonomous Zero-Knowledge Verification
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-tight">
+                  Tamper-Proof Service Commitments for Modern Enterprise B2B
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+                  SLAxiom bridges the gap between commercial service contracts and machine-verifiable mathematical proofs on Midnight Network — proving compliance without exposing operational telemetry.
+                </p>
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-purple-200 bg-white/10 px-2.5 py-1 rounded-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    Preprod Verified Contract
                   </span>
-                  <h2 className="text-lg sm:text-2xl font-bold font-heading text-white">
-                    Tamper-Proof Service Commitments for Modern Enterprise B2B
-                  </h2>
-                  <p className="text-xs text-slate-200 hidden sm:block">
-                    SLAxiom bridges the gap between commercial service contracts and machine-verifiable mathematical proofs on Midnight Network.
-                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-slate-300 bg-white/5 px-2.5 py-1 rounded-md">
+                    Halo 2 ZK-SNARK Circuits
+                  </span>
                 </div>
               </div>
             </section>
