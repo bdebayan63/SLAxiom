@@ -1,13 +1,17 @@
 # SLAxiom — Confidential Contract Performance & SLA Verification
 ### Privacy-Preserving Contract Verification for B2B Cloud Services, SaaS & MSP Agreements on Midnight Network
 
-![SLAxiom Brand Hero](frontend/public/images/slaxiom_hero_vault.jpg)
+<p align="center">
+  <img src="frontend/public/logo-shield.svg" alt="SLAxiom Logo" width="120" height="120" />
+</p>
 
-[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-Passing-10b981?style=flat-square&logo=githubactions&logoColor=white)](#automated-testing--cicd-pipeline)
-[![Midnight Network](https://img.shields.io/badge/Midnight-Preprod%20%26%20Preview-0ea5e9?style=flat-square)](#verified-on-chain-deployments)
-[![Compact Compiler](https://img.shields.io/badge/Compact-0.5.2-6366f1?style=flat-square)](#smart-contract--zk-circuits)
-[![Zero-Knowledge](https://img.shields.io/badge/ZK--SNARK-Halo%202-8b5cf6?style=flat-square)](#dual-state-privacy-model)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)](LICENSE)
+<p align="center">
+  <a href="#8-automated-testing--cicd-pipeline"><img src="https://img.shields.io/badge/CI%2FCD-Passing-7c3aed?style=flat-square&logo=githubactions&logoColor=white" alt="CI/CD" /></a>
+  <a href="#2-verified-on-chain-deployments--injections"><img src="https://img.shields.io/badge/Midnight-Preprod%20%26%20Preview-d97706?style=flat-square" alt="Midnight Network" /></a>
+  <a href="#7-smart-contract--zk-circuits"><img src="https://img.shields.io/badge/Compact-0.5.2-8b5cf6?style=flat-square" alt="Compact Compiler" /></a>
+  <a href="#4-dual-state-privacy-model"><img src="https://img.shields.io/badge/ZK--SNARK-Halo%202-6d28d9?style=flat-square" alt="Zero-Knowledge" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-475569?style=flat-square" alt="License" /></a>
+</p>
 
 ---
 

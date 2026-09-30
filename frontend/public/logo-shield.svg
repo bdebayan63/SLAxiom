@@ -1,44 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0284c7" />
-      <stop offset="50%" stop-color="#2563eb" />
-      <stop offset="100%" stop-color="#6366f1" />
+    <!-- Royal Violet Primary Gradient -->
+    <linearGradient id="shieldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#5B21B6" />
     </linearGradient>
-    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#818cf8" />
+
+    <!-- Warm Amber Core Accent -->
+    <linearGradient id="amberCore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+
+    <!-- Subtle Violet Glow -->
+    <filter id="violetGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="3" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
-  <!-- Outer Shield Outline -->
+
+  <!-- Outer Shield Shell -->
   <path
-    d="M50 8 L85 24 V52 C85 74 50 92 50 92 C50 92 15 74 15 52 V24 Z"
-    fill="#0f192e"
-    stroke="url(#shieldGrad)"
-    stroke-width="3"
+    d="M60 10 L102 28 V62 C102 88 60 110 60 110 C60 110 18 88 18 62 V28 Z"
+    fill="#FFFFFF"
+    stroke="url(#shieldBorder)"
+    stroke-width="3.5"
+    stroke-linejoin="round"
   />
-  <!-- Inner Circuit Grid Lines -->
+
+  <!-- Subtle Interior Shield Inset -->
   <path
-    d="M50 20 V80 M28 35 H72 M25 55 H75 M35 70 H65"
-    stroke="#1e3056"
+    d="M60 18 L94 33 V60 C94 81 60 99 60 99 C60 99 26 81 26 60 V33 Z"
+    fill="#F5F3FF"
+    stroke="#DDD6FE"
     stroke-width="1.5"
-    stroke-dasharray="2 2"
   />
-  <!-- Glowing Cryptographic Core -->
-  <circle cx="50" cy="48" r="14" fill="#070b14" stroke="url(#glowGrad)" stroke-width="2.5" filter="url(#glow)" />
-  <!-- Keyhole / Proof Gateway -->
+
+  <!-- Zero-Knowledge Circuit Traces -->
   <path
-    d="M50 42 A4 4 0 0 0 46 46 C46 48.5 48 50 48 54 H52 C52 50 54 48.5 54 46 A4 4 0 0 0 50 42 Z"
-    fill="#38bdf8"
+    d="M60 26 V90 M34 44 H86 M31 64 H89 M42 78 H78"
+    stroke="#C4B5FD"
+    stroke-width="1.5"
+    stroke-dasharray="3 3"
   />
-  <!-- Circuit Nodes -->
-  <circle cx="28" cy="35" r="2.5" fill="#38bdf8" />
-  <circle cx="72" cy="35" r="2.5" fill="#38bdf8" />
-  <circle cx="25" cy="55" r="2.5" fill="#818cf8" />
-  <circle cx="75" cy="55" r="2.5" fill="#818cf8" />
-  <circle cx="50" cy="80" r="3" fill="#10b981" />
+
+  <!-- Cryptographic Core Rings -->
+  <circle cx="60" cy="56" r="18" fill="#FFFFFF" stroke="url(#shieldBorder)" stroke-width="2.5" filter="url(#violetGlow)" />
+  <circle cx="60" cy="56" r="12" fill="#FAF5FF" stroke="url(#amberCore)" stroke-width="2" />
+
+  <!-- ZK Keyhole / Verification Gateway -->
+  <path
+    d="M60 49 A4.5 4.5 0 0 0 55.5 53.5 C55.5 56 57.5 58 57.5 63 H62.5 C62.5 58 64.5 56 64.5 53.5 A4.5 4.5 0 0 0 60 49 Z"
+    fill="url(#shieldBorder)"
+  />
+
+  <!-- Circuit Micro-Nodes -->
+  <circle cx="34" cy="44" r="3" fill="#7C3AED" />
+  <circle cx="86" cy="44" r="3" fill="#7C3AED" />
+  <circle cx="31" cy="64" r="3" fill="#D97706" />
+  <circle cx="89" cy="64" r="3" fill="#D97706" />
+  <circle cx="42" cy="78" r="2.5" fill="#7C3AED" />
+  <circle cx="78" cy="78" r="2.5" fill="#7C3AED" />
+  <circle cx="60" cy="90" r="3.5" fill="url(#amberCore)" />
 </svg>
