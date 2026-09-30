@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NetworkId, NETWORK_CONFIGS } from '../../lib/networkConfig';
 import { truncateAddress, getExplorerContractUrl } from '../../lib/addressUtils';
-import { Shield, Globe, ChevronDown, Menu, ExternalLink, LogOut, Check, LayoutDashboard, FileCode2, Cpu, Coins, FileBadge2 } from 'lucide-react';
+import { Shield, Globe, ChevronDown, ExternalLink, LogOut, Check, LayoutDashboard, FileCode2, Cpu, Coins, FileBadge2, Copy, CheckCheck } from 'lucide-react';
+import { WalletProviderId } from '../../hooks/useWallet';
 
 export type AppTab = 'dashboard' | 'policy-studio' | 'prover' | 'settlement' | 'audit';
 
@@ -13,6 +14,8 @@ interface NavbarProps {
   isConnected: boolean;
   isConnecting: boolean;
   address: string | null;
+  provider?: WalletProviderId | null;
+  dustBalance?: { balance: bigint; cap: bigint } | null;
   onOpenWalletModal: () => void;
   onDisconnectWallet: () => void;
   onToggleMobileDrawer: () => void;
@@ -26,11 +29,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   isConnected,
   isConnecting,
   address,
+  provider,
+  dustBalance,
   onOpenWalletModal,
   onDisconnectWallet,
   onToggleMobileDrawer,
 }) => {
   const [networkDropdownOpen, setNetworkDropdownOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const config = NETWORK_CONFIGS[currentNetwork];
   const contractExplorerUrl = getExplorerContractUrl(currentNetwork, config.contractAddress);
 
@@ -41,6 +47,26 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'settlement' as AppTab, label: 'Settlement', icon: Coins },
     { id: 'audit' as AppTab, label: 'Audit & Certs', icon: FileBadge2 },
   ];
+
+  const handleCopyAddress = () => {
+    if (!address) return;
+    navigator.clipboard.writeText(address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const providerLabel =
+    provider === '1am'
+      ? '⚡ 1AM'
+      : provider === 'lace'
+      ? '🛡️ Lace'
+      : provider === 'explorer'
+      ? '🌐 Explorer'
+      : 'Midnight';
+
+  const formattedDust = dustBalance
+    ? `${(Number(dustBalance.balance) / 1_000_000).toFixed(2)} tDUST`
+    : null;
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
@@ -98,8 +124,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200/70 border border-slate-200 text-xs font-semibold text-slate-700 transition"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600" />
               </span>
               <Globe className="w-3.5 h-3.5 text-slate-500" />
               <span>{config.badgeLabel}</span>
@@ -136,13 +162,27 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Primary Wallet Action Button */}
           {isConnected && address ? (
-            <div className="flex items-center gap-1 bg-slate-100 border border-slate-200 rounded-lg p-0.5">
-              <span className="px-3 py-1 text-xs font-mono font-medium text-slate-800">
-                {truncateAddress(address, 12, 4)}
+            <div className="flex items-center gap-1.5 bg-slate-100 border border-slate-200 rounded-lg p-1">
+              <span className="px-2 py-0.5 text-[11px] font-bold bg-white rounded border border-slate-200 text-purple-900 shadow-2xs">
+                {providerLabel}
               </span>
+              {formattedDust && (
+                <span className="px-1.5 py-0.5 text-[11px] font-mono text-amber-700 hidden lg:inline font-semibold">
+                  {formattedDust}
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={handleCopyAddress}
+                className="px-2 py-0.5 text-xs font-mono font-medium text-slate-800 hover:text-purple-700 transition flex items-center gap-1"
+                title="Click to copy address"
+              >
+                <span>{truncateAddress(address, 10, 4)}</span>
+                {copied ? <CheckCheck className="w-3 h-3 text-purple-600" /> : <Copy className="w-3 h-3 text-slate-400" />}
+              </button>
               <button
                 onClick={onDisconnectWallet}
-                className="p-1.5 rounded-md hover:bg-rose-100 text-slate-500 hover:text-rose-600 transition"
+                className="p-1 rounded-md hover:bg-rose-100 text-slate-400 hover:text-rose-600 transition"
                 title="Disconnect Wallet"
               >
                 <LogOut className="w-3.5 h-3.5" />
@@ -152,10 +192,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenWalletModal}
               disabled={isConnecting}
-              className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-purple-700 to-violet-700 hover:from-purple-600 hover:to-violet-600 text-white font-semibold text-xs shadow-sm transition active:scale-95"
+              className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-purple-700 to-violet-700 hover:from-purple-600 hover:to-violet-600 text-white font-semibold text-xs shadow-sm transition active:scale-95 disabled:opacity-60"
             >
               <Shield className="w-3.5 h-3.5 text-purple-200" />
-              <span>{isConnecting ? 'Connecting...' : 'Connect Wallet'}</span>
+              <span>{isConnecting ? 'Requesting Approval...' : 'Connect Wallet'}</span>
             </button>
           )}
 
@@ -164,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onToggleMobileDrawer}
             className="md:hidden p-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900"
           >
-            <Menu className="w-5 h-5" />
+            <Shield className="w-4 h-4 text-purple-600" />
           </button>
         </div>
       </div>

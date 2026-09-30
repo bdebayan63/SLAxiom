@@ -147,4 +147,42 @@ describe('SLAxiom Frontend Unit Tests', () => {
     const resB = await proveSlaCompliance(policy, witnessB);
     expect(resA.nullifier).not.toBe(resB.nullifier);
   });
+
+  it('correctly discovers 1AM Wallet and Lace Wallet via getDetectedWallets()', async () => {
+    const { getDetectedWallets } = await import('./hooks/useWallet');
+
+    (globalThis as any).window = (globalThis as any).window || {};
+    delete (globalThis as any).window.midnight;
+
+    expect(getDetectedWallets().has1am).toBe(false);
+    expect(getDetectedWallets().hasLace).toBe(false);
+
+    // Simulate 1AM Wallet injection
+    (globalThis as any).window.midnight = {
+      '1am': {
+        name: '1AM Wallet',
+        rdns: 'io.1am.wallet',
+        apiVersion: '4.0.1',
+        connect: async () => ({} as any),
+      },
+    };
+
+    const detected = getDetectedWallets();
+    expect(detected.has1am).toBe(true);
+    expect(detected.hasLace).toBe(false);
+    expect(detected.hasAny).toBe(true);
+    expect(detected.detectedList[0].name).toBe('1AM Wallet');
+
+    // Clean up
+    delete (globalThis as any).window.midnight;
+  });
+
+  it('returns null and never creates mock addresses when wallet extension is missing', async () => {
+    const { findWalletApi } = await import('./hooks/useWallet');
+    (globalThis as any).window = (globalThis as any).window || {};
+    delete (globalThis as any).window.midnight;
+
+    const api = await findWalletApi('1am');
+    expect(api).toBeNull();
+  });
 });

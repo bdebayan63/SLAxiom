@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { SlaPolicy, generateSaltHex } from '../../lib/contractApi';
-import { FileCode2, Lock, Shield, Check, Copy, ArrowRight, Download, Sliders, RefreshCw, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { SlaPolicy, sha256Hex } from '../../lib/contractApi';
+import { FileCode2, Lock, Check, Copy, Download, Sliders, Zap, AlertCircle } from 'lucide-react';
 import { ShinyText } from '../animations/ShinyText';
 import { SpotlightCard } from '../ui/SpotlightCard';
 
@@ -26,20 +26,26 @@ export const PolicyStudio: React.FC<PolicyStudioProps> = ({
   const [clientDid, setClientDid] = useState('did:midnight:enterprise_client_fintech');
   const [copied, setCopied] = useState(false);
   const [committedSuccess, setCommittedSuccess] = useState(false);
+  const [commitError, setCommitError] = useState<string | null>(null);
+  const [localSubmitting, setLocalSubmitting] = useState(false);
 
-  // Compute deterministic policy commitment hash
-  const computePolicyHash = () => {
-    const raw = `${agreementTitle}|${minUptime}|${maxLatency}|${maxIncidents}|${periodId}|${providerDid}|${clientDid}`;
-    let hash = 0;
-    for (let i = 0; i < raw.length; i++) {
-      hash = (hash << 5) - hash + raw.charCodeAt(i);
-      hash |= 0;
+  // Compute live real cryptographic SHA-256 policy commitment hash
+  const [policyCommitmentHash, setPolicyCommitmentHash] = useState('0xd6abf137e41843b021876e994d80a1c94a32961f317d91703f4cd98a9ebef088b');
+
+  useEffect(() => {
+    let active = true;
+    async function calculateHash() {
+      const payload = `${agreementTitle}|${minUptime}|${maxLatency}|${maxIncidents}|${periodId}|${providerDid}|${clientDid}`;
+      const hash = await sha256Hex(payload);
+      if (active) {
+        setPolicyCommitmentHash(`0x${hash}`);
+      }
     }
-    const hex = Math.abs(hash).toString(16).padStart(8, '0');
-    return `0x${hex}94a32961f317d91703f4cd98a9ebef088bd6abf1374a1cdfe3a5264e1ecfec`.slice(0, 66);
-  };
-
-  const policyCommitmentHash = computePolicyHash();
+    calculateHash();
+    return () => {
+      active = false;
+    };
+  }, [agreementTitle, minUptime, maxLatency, maxIncidents, periodId, providerDid, clientDid]);
 
   const handleCopyHash = () => {
     navigator.clipboard.writeText(policyCommitmentHash);
@@ -59,12 +65,21 @@ export const PolicyStudio: React.FC<PolicyStudioProps> = ({
   };
 
   const handleCommit = async () => {
-    if (onCommitPolicyOnChain) {
-      await onCommitPolicyOnChain(policyCommitmentHash);
+    setCommitError(null);
+    setLocalSubmitting(true);
+    try {
+      if (onCommitPolicyOnChain) {
+        await onCommitPolicyOnChain(policyCommitmentHash);
+      }
+      handleApplyPolicy();
+      setCommittedSuccess(true);
+      setTimeout(() => setCommittedSuccess(false), 4000);
+    } catch (err: any) {
+      setCommitError(err?.message || 'Transaction signing cancelled or rejected in wallet');
+      setTimeout(() => setCommitError(null), 5000);
+    } finally {
+      setLocalSubmitting(false);
     }
-    handleApplyPolicy();
-    setCommittedSuccess(true);
-    setTimeout(() => setCommittedSuccess(false), 3000);
   };
 
   // Pre-configured industry templates
@@ -143,80 +158,91 @@ export const PolicyStudio: React.FC<PolicyStudioProps> = ({
           </div>
         </div>
 
-        {/* Quick Industry Presets */}
+        {/* Industry Template Quick Select */}
         <div className="flex items-center flex-wrap gap-2">
-          <span className="text-[11px] font-mono text-slate-400">Industry Presets:</span>
+          <span className="text-xs font-mono text-slate-500">Preset Templates:</span>
           <button
             type="button"
             onClick={() => applyTemplate('tier1')}
-            className="px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 text-xs font-medium transition"
+            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-purple-100/70 border border-slate-200 text-xs font-medium text-slate-700 hover:text-purple-900 transition"
           >
-            Tier 1 FinTech (99.99%)
+            Tier 1 Financial (99.99%)
           </button>
           <button
             type="button"
             onClick={() => applyTemplate('mission_critical')}
-            className="px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 text-xs font-medium transition"
+            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-purple-100/70 border border-slate-200 text-xs font-medium text-slate-700 hover:text-purple-900 transition"
           >
             Mission-Critical (99.95%)
           </button>
           <button
             type="button"
             onClick={() => applyTemplate('standard')}
-            className="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium transition"
+            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-purple-100/70 border border-slate-200 text-xs font-medium text-slate-700 hover:text-purple-900 transition"
           >
-            Standard SaaS (99.5%)
+            Standard Enterprise (99.50%)
           </button>
         </div>
       </div>
 
-      {/* Grid: Policy Form + Cryptographic Commitment Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Form: Agreement & Predicate Parameters (7 cols) */}
-        <div className="lg:col-span-7 space-y-5">
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-5">
+      {/* Main Grid: Left Spec Editor, Right On-Chain Hash */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Left Column: Form Inputs (7 cols) */}
+        <div className="lg:col-span-7 space-y-6">
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 space-y-5 shadow-sm">
             <h3 className="text-sm font-bold font-mono uppercase tracking-wider text-purple-700 flex items-center gap-2">
-              <Shield className="w-4 h-4 text-purple-600" />
-              <span>1. Contract Agreement Metadata</span>
+              <Sliders className="w-4 h-4 text-purple-600" />
+              <span>1. Agreement Metadata & Counterparties</span>
             </h3>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-slate-700 mb-1">
-                  Agreement Title
+                  Agreement Title / Designation
                 </label>
                 <input
                   type="text"
                   value={agreementTitle}
                   onChange={(e) => setAgreementTitle(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-purple-500 font-medium"
+                  className="w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-sans text-slate-900 focus:outline-none focus:border-purple-500 font-semibold"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
-                    Provider Decentralized ID (DID)
+                    Provider DID / Address
                   </label>
                   <input
                     type="text"
                     value={providerDid}
                     onChange={(e) => setProviderDid(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-[11px] font-mono text-slate-800 focus:outline-none focus:border-purple-500"
+                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-mono text-slate-700 focus:outline-none focus:border-purple-500"
                   />
                 </div>
-
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
-                    Client Decentralized ID (DID)
+                    Client DID / Address
                   </label>
                   <input
                     type="text"
                     value={clientDid}
                     onChange={(e) => setClientDid(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-[11px] font-mono text-slate-800 focus:outline-none focus:border-purple-500"
+                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-mono text-slate-700 focus:outline-none focus:border-purple-500"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">
+                  Audit Cadence / Period Identifier
+                </label>
+                <input
+                  type="text"
+                  value={periodId}
+                  onChange={(e) => setPeriodId(e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-mono text-slate-700 focus:outline-none focus:border-purple-500"
+                />
               </div>
             </div>
 
@@ -313,7 +339,7 @@ export const PolicyStudio: React.FC<PolicyStudioProps> = ({
               {/* Hash Display Box */}
               <div className="p-3.5 rounded-xl bg-white border border-purple-200 space-y-2">
                 <div className="flex justify-between items-center text-[10px] font-mono text-slate-400">
-                  <span>SHA-256 Policy Commitment Hash:</span>
+                  <span>Cryptographic SHA-256 Digest:</span>
                   <button
                     onClick={handleCopyHash}
                     className="flex items-center gap-1 text-purple-700 hover:text-purple-900 font-semibold"
@@ -354,16 +380,27 @@ export const PolicyStudio: React.FC<PolicyStudioProps> = ({
               <button
                 type="button"
                 onClick={handleCommit}
-                disabled={isCommitting}
+                disabled={isCommitting || localSubmitting}
                 className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-700 to-violet-700 hover:from-purple-600 hover:to-violet-600 text-white font-semibold text-xs shadow-md transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Zap className="w-4 h-4 text-purple-200" />
-                <span>{isCommitting ? 'Committing to Midnight...' : 'Lock Policy Commitment On-Chain'}</span>
+                <span>
+                  {isCommitting || localSubmitting
+                    ? 'Requesting Approval in Wallet...'
+                    : 'Lock Policy Commitment On-Chain'}
+                </span>
               </button>
 
               {committedSuccess && (
-                <div className="p-2.5 rounded-lg bg-purple-100 border border-purple-300 text-purple-800 text-xs text-center font-medium animate-in fade-in">
-                  Policy commitment hash successfully registered on Midnight Preprod!
+                <div className="p-2.5 rounded-lg bg-purple-100 border border-purple-300 text-purple-900 text-xs text-center font-medium animate-in fade-in">
+                  Policy commitment hash successfully signed & verified on Midnight Preprod!
+                </div>
+              )}
+
+              {commitError && (
+                <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 text-xs text-center font-medium flex items-center justify-center gap-1.5 animate-in fade-in">
+                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+                  <span>{commitError}</span>
                 </div>
               )}
             </div>

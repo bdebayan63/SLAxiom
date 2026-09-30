@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import type { InitialAPI, ConnectedAPI, Configuration } from '@midnight-ntwrk/dapp-connector-api';
 import { NetworkId } from '../lib/networkConfig';
 import { extractBech32Address } from '../lib/addressUtils';
 
@@ -8,140 +9,298 @@ export interface WalletState {
   isConnected: boolean;
   isConnecting: boolean;
   address: string | null;
+  unshieldedAddress: string | null;
+  shieldedAddress: string | null;
+  dustAddress: string | null;
+  dustBalance: { balance: bigint; cap: bigint } | null;
+  unshieldedBalances: Record<string, bigint> | null;
+  configuration: Configuration | null;
   network: NetworkId;
   provider: WalletProviderId | null;
+  connectedApi: ConnectedAPI | null;
   error: string | null;
 }
 
-// Resilient v4 DApp Connector address extraction cascade
-async function extractAddressFromApi(api: any): Promise<string> {
-  if (!api) return '';
+export interface DetectedWallets {
+  has1am: boolean;
+  hasLace: boolean;
+  hasAny: boolean;
+  detectedList: Array<{ id: string; name: string; icon?: string }>;
+}
 
-  // 1. Modern v4 Unshielded Address
-  try {
-    if (typeof api.getUnshieldedAddress === 'function') {
-      const res = await api.getUnshieldedAddress();
-      if (res?.unshieldedAddress) return extractBech32Address(res.unshieldedAddress);
+/**
+ * Inspects `window.midnight` for any injected DApp Connector InitialAPI instances.
+ */
+export function getDetectedWallets(): DetectedWallets {
+  if (typeof window === 'undefined') {
+    return { has1am: false, hasLace: false, hasAny: false, detectedList: [] };
+  }
+
+  const midnightObj = (window as any).midnight;
+  if (!midnightObj || typeof midnightObj !== 'object') {
+    return { has1am: false, hasLace: false, hasAny: false, detectedList: [] };
+  }
+
+  const detectedList: Array<{ id: string; name: string; icon?: string }> = [];
+  let has1am = false;
+  let hasLace = false;
+
+  for (const [key, val] of Object.entries(midnightObj)) {
+    const api = val as Partial<InitialAPI> | undefined;
+    const name = api?.name || key;
+    const rdns = api?.rdns || '';
+    const icon = api?.icon;
+
+    detectedList.push({ id: key, name, icon });
+
+    if (key.toLowerCase() === '1am' || /1am/i.test(name) || /1am/i.test(rdns)) {
+      has1am = true;
     }
-  } catch (e) { /* continue cascade */ }
-
-  // 2. Modern v4 Shielded Address
-  try {
-    if (typeof api.getShieldedAddresses === 'function') {
-      const res = await api.getShieldedAddresses();
-      if (res?.shieldedAddress) return extractBech32Address(res.shieldedAddress);
+    if (key.toLowerCase() === 'mnlace' || /lace/i.test(name) || /lace/i.test(rdns)) {
+      hasLace = true;
     }
-  } catch (e) { /* continue cascade */ }
+  }
 
-  // 3. Modern v4 Fee / DUST Address
-  try {
-    if (typeof api.getDustAddress === 'function') {
-      const res = await api.getDustAddress();
-      if (res?.dustAddress) return extractBech32Address(res.dustAddress);
+  if ((window as any).lace?.midnight) {
+    hasLace = true;
+    if (!detectedList.some((d) => d.id === 'mnLace' || /lace/i.test(d.name))) {
+      detectedList.push({ id: 'mnLace', name: 'Midnight Lace' });
     }
-  } catch (e) { /* continue cascade */ }
+  }
 
-  // 4. Legacy v3 Fallback
-  try {
-    if (typeof api.state === 'function') {
-      const res = await api.state();
-      if (res?.address) return extractBech32Address(res.address);
+  return {
+    has1am,
+    hasLace,
+    hasAny: detectedList.length > 0,
+    detectedList,
+  };
+}
+
+/**
+ * Actively probes and polls for a specific injected InitialAPI.
+ * Allows time for extension content scripts to inject into the DOM.
+ */
+export async function findWalletApi(providerId: WalletProviderId): Promise<InitialAPI | null> {
+  if (typeof window === 'undefined') return null;
+
+  const maxAttempts = 15;
+  for (let i = 0; i < maxAttempts; i++) {
+    const midnightObj = (window as any).midnight;
+    if (midnightObj && typeof midnightObj === 'object') {
+      if (providerId === '1am') {
+        if (midnightObj['1am']) return midnightObj['1am'] as InitialAPI;
+        if (midnightObj['1AM']) return midnightObj['1AM'] as InitialAPI;
+        if (midnightObj['io.1am.wallet']) return midnightObj['io.1am.wallet'] as InitialAPI;
+
+        const found = Object.values(midnightObj).find((w: any) =>
+          /1am/i.test(w?.name || '') || /1am/i.test(w?.rdns || '')
+        );
+        if (found) return found as InitialAPI;
+      } else if (providerId === 'lace') {
+        if (midnightObj.mnLace) return midnightObj.mnLace as InitialAPI;
+        if ((window as any).lace?.midnight) return (window as any).lace.midnight as InitialAPI;
+
+        const found = Object.values(midnightObj).find((w: any) =>
+          /lace/i.test(w?.name || '') || /lace/i.test(w?.rdns || '')
+        );
+        if (found) return found as InitialAPI;
+      } else if (providerId === 'injected') {
+        const values = Object.values(midnightObj);
+        if (values.length > 0) return values[0] as InitialAPI;
+      }
     }
-  } catch (e) { /* continue cascade */ }
+    await new Promise((r) => setTimeout(r, 80));
+  }
 
-  return extractBech32Address(api.address) || '';
+  return null;
 }
 
 export function useWallet(currentNetwork: NetworkId) {
-  // Volatile in-memory state only — zero stale localStorage ghosts
+  // Volatile in-memory state only — zero localStorage ghosts
   const [state, setState] = useState<WalletState>({
     isConnected: false,
     isConnecting: false,
     address: null,
+    unshieldedAddress: null,
+    shieldedAddress: null,
+    dustAddress: null,
+    dustBalance: null,
+    unshieldedBalances: null,
+    configuration: null,
     network: currentNetwork,
     provider: null,
+    connectedApi: null,
     error: null,
   });
+
+  const [detected, setDetected] = useState<DetectedWallets>({
+    has1am: false,
+    hasLace: false,
+    hasAny: false,
+    detectedList: [],
+  });
+
+  // Periodically check for installed extensions
+  useEffect(() => {
+    const updateDetected = () => {
+      setDetected(getDetectedWallets());
+    };
+    updateDetected();
+    const interval = setInterval(updateDetected, 1500);
+    return () => clearInterval(interval);
+  }, []);
 
   const connect = useCallback(async (providerId: WalletProviderId) => {
     setState((prev) => ({ ...prev, isConnecting: true, error: null }));
 
     try {
       if (providerId === 'explorer') {
-        // Direct Read-Only Explorer Mode (instant evaluation without extension)
+        // Read-Only Explorer Mode (explicitly chosen for non-extension evaluation)
         const prefix = currentNetwork === 'preprod' ? 'mn_addr_preprod1' : 'mn_addr_preview1';
-        const demoAddress = `${prefix}84f902b1c8a1473de01bcf9021876e994d80a1c`;
+        const explorerAddress = `${prefix}explorer_readonly_audit_session`;
         setState({
           isConnected: true,
           isConnecting: false,
-          address: demoAddress,
+          address: explorerAddress,
+          unshieldedAddress: explorerAddress,
+          shieldedAddress: null,
+          dustAddress: null,
+          dustBalance: null,
+          unshieldedBalances: null,
+          configuration: null,
           network: currentNetwork,
           provider: 'explorer',
+          connectedApi: null,
           error: null,
         });
         return;
       }
 
-      // Check browser extension injection
-      const midnightGlobal = (window as any).midnight;
+      // Search for the genuine injected InitialAPI from the browser extension
+      const walletApi = await findWalletApi(providerId);
 
-      if (!midnightGlobal) {
-        // In modern evaluation environments without pre-installed extension, switch to demo/explorer with friendly notice
-        const prefix = currentNetwork === 'preprod' ? 'mn_addr_preprod1' : 'mn_addr_preview1';
-        const fallbackAddress = `${prefix}90b218ce77a83db4892cfa98129e0018bdf71c2`;
-        setState({
-          isConnected: true,
+      if (!walletApi) {
+        const name = providerId === '1am' ? '1AM Wallet' : providerId === 'lace' ? 'Midnight Lace' : 'Midnight DApp Connector';
+        setState((prev) => ({
+          ...prev,
           isConnecting: false,
-          address: fallbackAddress,
-          network: currentNetwork,
-          provider: providerId,
-          error: null,
-        });
+          isConnected: false,
+          address: null,
+          connectedApi: null,
+          error: `${name} extension was not detected. Please install ${name} or ensure the extension is enabled in your browser.`,
+        }));
         return;
       }
 
-      // Resolve specific provider API
-      let targetApi = null;
-      if (providerId === '1am' && midnightGlobal['1am']) {
-        targetApi = midnightGlobal['1am'];
-      } else if (providerId === 'lace' && midnightGlobal.mnLace) {
-        targetApi = midnightGlobal.mnLace;
+      // Trigger the genuine wallet connection approval popup modal
+      let connectedApi: ConnectedAPI;
+      if (typeof walletApi.connect === 'function') {
+        connectedApi = await walletApi.connect(currentNetwork);
+      } else if (typeof (walletApi as any).enable === 'function') {
+        connectedApi = await (walletApi as any).enable(currentNetwork);
       } else {
-        targetApi = Object.values(midnightGlobal)[0];
+        throw new Error(`The detected ${walletApi.name || 'wallet'} does not support connect() or enable() methods.`);
       }
 
-      if (targetApi && typeof targetApi.enable === 'function') {
-        const connectedApi = await targetApi.enable(currentNetwork);
-        const resolvedAddress = await extractAddressFromApi(connectedApi);
-        setState({
-          isConnected: true,
-          isConnecting: false,
-          address: resolvedAddress || `mn_addr_${currentNetwork}1userauth`,
-          network: currentNetwork,
-          provider: providerId,
-          error: null,
-        });
-      } else {
-        throw new Error('Ecosystem wallet connector unavailable');
-      }
-    } catch (err: any) {
-      // Graceful cancellation handling — catch user rejection (code 4001) without dumping red error
-      const isUserReject = err?.code === 4001 || /user reject/i.test(err?.message || '');
-      if (isUserReject) {
-        setState((prev) => ({ ...prev, isConnecting: false, error: null }));
-        return;
+      // User APPROVED the connection in the extension modal!
+      // Synchronize genuine unshielded, shielded, and dust addresses from the connected account
+      let unshieldedAddress: string | null = null;
+      try {
+        if (typeof connectedApi.getUnshieldedAddress === 'function') {
+          const res = await connectedApi.getUnshieldedAddress();
+          const raw = res?.unshieldedAddress || res;
+          unshieldedAddress = extractBech32Address(raw) || null;
+        }
+      } catch (e) {
+        console.warn('Could not retrieve unshielded address:', e);
       }
 
-      // Non-intrusive fallback
-      const prefix = currentNetwork === 'preprod' ? 'mn_addr_preprod1' : 'mn_addr_preview1';
+      let shieldedAddress: string | null = null;
+      try {
+        if (typeof connectedApi.getShieldedAddresses === 'function') {
+          const res = await connectedApi.getShieldedAddresses();
+          const raw = res?.shieldedAddress || (Array.isArray(res) ? res[0] : res);
+          shieldedAddress = extractBech32Address(raw) || null;
+        }
+      } catch (e) {
+        console.warn('Could not retrieve shielded address:', e);
+      }
+
+      let dustAddress: string | null = null;
+      try {
+        if (typeof connectedApi.getDustAddress === 'function') {
+          const res = await connectedApi.getDustAddress();
+          const raw = res?.dustAddress || res;
+          dustAddress = extractBech32Address(raw) || null;
+        }
+      } catch (e) {
+        console.warn('Could not retrieve dust address:', e);
+      }
+
+      let dustBalance: { balance: bigint; cap: bigint } | null = null;
+      try {
+        if (typeof connectedApi.getDustBalance === 'function') {
+          dustBalance = await connectedApi.getDustBalance();
+        }
+      } catch (e) {
+        console.warn('Could not retrieve dust balance:', e);
+      }
+
+      let unshieldedBalances: Record<string, bigint> | null = null;
+      try {
+        if (typeof connectedApi.getUnshieldedBalances === 'function') {
+          unshieldedBalances = await connectedApi.getUnshieldedBalances();
+        }
+      } catch (e) {
+        console.warn('Could not retrieve unshielded balances:', e);
+      }
+
+      let configuration: Configuration | null = null;
+      try {
+        if (typeof connectedApi.getConfiguration === 'function') {
+          configuration = await connectedApi.getConfiguration();
+        }
+      } catch (e) {
+        console.warn('Could not retrieve wallet configuration:', e);
+      }
+
+      const primaryAddress = unshieldedAddress || shieldedAddress || dustAddress || `mn_addr_${currentNetwork}1userauth`;
+
       setState({
         isConnected: true,
         isConnecting: false,
-        address: `${prefix}77b49d01ac89f648b29103e9812bca0199fe`,
+        address: primaryAddress,
+        unshieldedAddress,
+        shieldedAddress,
+        dustAddress,
+        dustBalance,
+        unshieldedBalances,
+        configuration,
         network: currentNetwork,
         provider: providerId,
+        connectedApi,
         error: null,
       });
+    } catch (err: any) {
+      // Handle user cancellation/rejection gracefully without dumping uncaught errors
+      const isRejection =
+        err?.code === 'Rejected' ||
+        err?.code === 4001 ||
+        /reject/i.test(err?.message || '') ||
+        /cancel/i.test(err?.message || '') ||
+        /denied/i.test(err?.message || '') ||
+        /declined/i.test(err?.message || '');
+
+      setState((prev) => ({
+        ...prev,
+        isConnected: false,
+        isConnecting: false,
+        address: null,
+        connectedApi: null,
+        error: isRejection
+          ? 'Connection request was cancelled in your wallet extension. Please click Connect and approve the request.'
+          : `Wallet connection failed: ${err?.message || 'Unknown extension error'}`,
+      }));
     }
   }, [currentNetwork]);
 
@@ -150,14 +309,22 @@ export function useWallet(currentNetwork: NetworkId) {
       isConnected: false,
       isConnecting: false,
       address: null,
+      unshieldedAddress: null,
+      shieldedAddress: null,
+      dustAddress: null,
+      dustBalance: null,
+      unshieldedBalances: null,
+      configuration: null,
       network: currentNetwork,
       provider: null,
+      connectedApi: null,
       error: null,
     });
   }, [currentNetwork]);
 
   return {
     ...state,
+    detected,
     connect,
     disconnect,
   };

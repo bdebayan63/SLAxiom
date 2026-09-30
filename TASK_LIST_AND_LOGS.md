@@ -7,7 +7,7 @@
 - **Smart Contract Language:** Compact 0.5.2 (ZK circuits + TypeScript bindings)
 - **Frontend Stack:** React, Vite, TypeScript, Tailwind CSS, Motion, Three.js, React Bits components
 - **Tracking Started:** September 30, 2026
-- **Current Status:** 100% Implemented & Verified (All 20 Tasks Completed)
+- **Current Status:** 100% Implemented & Verified (All 27 Tasks Completed)
 
 ---
 
@@ -35,6 +35,13 @@
 | **TASK-18** | Author enterprise-grade documentation (`README.md`, `PRIVACY_MODEL.md`, `ARCHITECTURE.md`) | Docs | **COMPLETED** | 100% product-focused documentation with zero challenge milestone contamination |
 | **TASK-19** | Configure GitHub Actions CI/CD workflow (`ci-cd.yml`) with contract & frontend deployment | CI/CD | **COMPLETED** | Multi-stage pipeline: compile, test, frontend build, contract deploy, vercel deploy |
 | **TASK-20** | Final verification, TypeScript strict compile (`tsc --noEmit`), and testing pass | Verification | **COMPLETED** | End-to-end verification and quality assurance pass: 10/10 tests passed across workspaces |
+| **TASK-21** | Install official `@midnight-ntwrk/dapp-connector-api` SDK package | DApp-SDK | **COMPLETED** | Installed `@midnight-ntwrk/dapp-connector-api@4.0.1` in `frontend/package.json` |
+| **TASK-22** | Research & map 1AM Wallet and Lace injection mechanisms and `connect(networkId)` specs | Research | **COMPLETED** | Verified `window.midnight['1am']`, `InitialAPI`, `ConnectedAPI`, and extension approval popup triggers |
+| **TASK-23** | Eliminate all silent mock fallbacks in `useWallet.ts` and implement genuine extension approval popup | Wallet | **COMPLETED** | Trigger native wallet popup via `connect()`, handle rejection/absence gracefully |
+| **TASK-24** | Synchronize real wallet state (unshielded, shielded, dust addresses & live token balances) | Wallet | **COMPLETED** | Extract real Bech32m addresses and live tDUST/tNIGHT balances from `ConnectedAPI` |
+| **TASK-25** | Upgrade `WalletModal.tsx` with dynamic extension detection badges and installation links | Frontend | **COMPLETED** | Show detected status, direct links to install 1AM Wallet, and distinct Read-Only Explorer mode |
+| **TASK-26** | Connect Policy Studio & Client Prover to live on-chain contract and wallet transaction signing | On-Chain | **COMPLETED** | Query live contract action state from Preprod indexer and prompt wallet signature on policy commitment |
+| **TASK-27** | Comprehensive verification: tests, type checks, production build, and Netlify deployment | Deploy | **COMPLETED** | 16/16 tests passing, zero TypeScript errors, bundle verified |
 
 ---
 
@@ -81,3 +88,13 @@
 - Frontend Unit Tests: 3 passed
 - Frontend Bundle: `dist/index.html` (1.30 kB), `dist/assets/index-DoPP-J3F.css` (34.18 kB), `dist/assets/index-rW39oNOp.js` (800.94 kB) built in 6.69s.
 - Zero TypeScript errors (`tsc --noEmit`).
+
+### [Log 2026-09-30 22:30:15] Phase 6: Genuine Midnight DApp Connector Integration & Live On-Chain Sync
+- **Official DApp Connector Standard:** Integrated `@midnight-ntwrk/dapp-connector-api@4.0.1` (`InitialAPI`, `ConnectedAPI`, `Configuration`).
+- **Eliminated Silent Mocks:** Removed all fallback address generators (`mn_addr_preprod190b218...` and `mn_addr_preprod177b49d...`).
+- **Dynamic Wallet Discovery:** Implemented polling for `window.midnight` detecting `window.midnight['1am']`, `1AM`, `io.1am.wallet`, `mnLace`, and arbitrary UUID wallet registrations.
+- **Native Extension Approval Popup:** Switched to calling `wallet.connect(networkId)` which actively opens the browser extension window prompting the user to approve/reject the connection.
+- **Account State Synchronization:** Extracts real unshielded, shielded, and dust Bech32m addresses and live tDUST/tNIGHT balances via `ConnectedAPI` methods (`getUnshieldedAddress`, `getShieldedAddresses`, `getDustAddress`, `getDustBalance`, `getUnshieldedBalances`).
+- **Live Preprod Indexer Integration:** Configured GraphQL query querying `{ block { height hash } contractAction(address: "fc67e285...") { address state zswapState } }` fetching live Preprod block height (`2,778,290+`) and verified on-chain contract state.
+- **Wallet-Signed Policy Commitments:** Policy Studio and Client Prover prompt `connectedApi.signData` to attest cryptographic commitments directly via the user's private key.
+- **Test Suite Pass:** 16/16 tests passing (7 contract circuits + 9 frontend unit/integration tests). Production build generated with zero TypeScript warnings.

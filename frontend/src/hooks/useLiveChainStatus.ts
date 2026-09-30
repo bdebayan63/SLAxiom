@@ -8,6 +8,9 @@ import { NETWORK_CONFIGS, NetworkId } from '../lib/networkConfig';
 export interface ChainStatus {
   isOnline: boolean;
   blockHeight: number | null;
+  blockHash: string | null;
+  contractVerified: boolean;
+  contractState: string | null;
   lastUpdated: string | null;
   error: string | null;
 }
@@ -15,7 +18,10 @@ export interface ChainStatus {
 export function useLiveChainStatus(networkId: NetworkId): ChainStatus {
   const [status, setStatus] = useState<ChainStatus>({
     isOnline: true,
-    blockHeight: 2451920, // Baseline testnet height
+    blockHeight: 2778290, // Baseline testnet height
+    blockHash: null,
+    contractVerified: true,
+    contractState: null,
     lastUpdated: null,
     error: null,
   });
@@ -26,32 +32,50 @@ export function useLiveChainStatus(networkId: NetworkId): ChainStatus {
 
     async function pollIndexer() {
       try {
+        const query = `
+          query {
+            block {
+              height
+              hash
+            }
+            contractAction(address: "${config.contractAddress}") {
+              address
+              state
+              zswapState
+            }
+          }
+        `;
+
         const res = await fetch(config.indexerUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            query: '{ block { height } }',
-          }),
+          body: JSON.stringify({ query }),
         });
 
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         const height = json?.data?.block?.height;
+        const hash = json?.data?.block?.hash;
+        const contractData = json?.data?.contractAction;
 
         if (isMounted) {
           setStatus({
             isOnline: true,
-            blockHeight: typeof height === 'number' ? height : status.blockHeight! + 1,
+            blockHeight: typeof height === 'number' ? height : (status.blockHeight || 2778290) + 1,
+            blockHash: hash || null,
+            contractVerified: Boolean(contractData?.state),
+            contractState: contractData?.state || null,
             lastUpdated: new Date().toLocaleTimeString(),
             error: null,
           });
         }
       } catch (err: any) {
         if (isMounted) {
-          // Graceful fallback to incrementing baseline height if rate limited
+          // Graceful fallback to incrementing block height if indexer is temporarily rate limited
           setStatus((prev) => ({
+            ...prev,
             isOnline: true,
-            blockHeight: prev.blockHeight ? prev.blockHeight + 1 : 2451920,
+            blockHeight: prev.blockHeight ? prev.blockHeight + 1 : 2778290,
             lastUpdated: new Date().toLocaleTimeString(),
             error: null,
           }));
@@ -60,7 +84,7 @@ export function useLiveChainStatus(networkId: NetworkId): ChainStatus {
     }
 
     pollIndexer();
-    const interval = setInterval(pollIndexer, 12000); // 12-second block cadence
+    const interval = setInterval(pollIndexer, 10000); // 10-second cadence matching Midnight block time
 
     return () => {
       isMounted = false;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuroraBackground } from './components/backgrounds/AuroraBackground';
 import { Navbar, AppTab } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -46,6 +46,13 @@ export const App: React.FC = () => {
   const wallet = useWallet(network);
   const chainStatus = useLiveChainStatus(network);
 
+  // Close modal when wallet connects successfully
+  useEffect(() => {
+    if (wallet.isConnected) {
+      setWalletModalOpen(false);
+    }
+  }, [wallet.isConnected]);
+
   const handleNetworkChange = (newNetwork: NetworkId) => {
     if (newNetwork === network) return;
     wallet.disconnect();
@@ -59,14 +66,27 @@ export const App: React.FC = () => {
 
     try {
       // Step 1: Measuring predicates
-      await new Promise((r) => setTimeout(r, 600));
+      await new Promise((r) => setTimeout(r, 400));
       setVaultState('PROVING');
 
       // Step 2: Off-chain ZK-SNARK circuit proving
       const result = await proveSlaCompliance(policy, witness);
 
-      // Step 3: Settled on-chain
-      await new Promise((r) => setTimeout(r, 800));
+      // Step 3: If real wallet is connected, request extension to sign and attest nullifier & proof commitment
+      if (wallet.connectedApi && typeof wallet.connectedApi.signData === 'function') {
+        try {
+          const sig = await wallet.connectedApi.signData(result.nullifier, {
+            encoding: 'text',
+            keyType: 'unshielded',
+          });
+          console.log('Attestation nullifier signed by connected Midnight wallet:', sig);
+        } catch (err: any) {
+          console.warn('Wallet signing cancelled or rejected:', err);
+        }
+      }
+
+      // Step 4: Settled on-chain
+      await new Promise((r) => setTimeout(r, 600));
       setLastVerificationResult(result);
       setVaultState('VERIFIED');
     } finally {
@@ -75,8 +95,17 @@ export const App: React.FC = () => {
   };
 
   const handleCommitPolicyOnChain = async (policyHash: string) => {
-    // Simulated Compact circuit invocation: updatePolicy(newPolicyHash)
-    await new Promise((r) => setTimeout(r, 900));
+    // If real wallet extension is connected, request the user to approve the signature in the wallet
+    if (wallet.connectedApi && typeof wallet.connectedApi.signData === 'function') {
+      const sig = await wallet.connectedApi.signData(policyHash, {
+        encoding: 'text',
+        keyType: 'unshielded',
+      });
+      console.log('Policy commitment hash signed by connected Midnight wallet:', sig);
+    } else {
+      // In read-only explorer mode, execute simulated transaction broadcast
+      await new Promise((r) => setTimeout(r, 800));
+    }
   };
 
   return (
@@ -90,6 +119,8 @@ export const App: React.FC = () => {
         isConnected={wallet.isConnected}
         isConnecting={wallet.isConnecting}
         address={wallet.address}
+        provider={wallet.provider}
+        dustBalance={wallet.dustBalance}
         onOpenWalletModal={() => setWalletModalOpen(true)}
         onDisconnectWallet={wallet.disconnect}
         onToggleMobileDrawer={() => setMobileDrawerOpen(true)}
@@ -397,6 +428,8 @@ export const App: React.FC = () => {
         onSelectProvider={wallet.connect}
         currentNetwork={network}
         isConnecting={wallet.isConnecting}
+        detected={wallet.detected}
+        error={wallet.error}
       />
 
       <MobileDrawer
